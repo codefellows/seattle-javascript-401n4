@@ -5,7 +5,6 @@
 [![](https://img.shields.io/badge/canvas-401n4-red.svg)](https://canvas.instructure.com/courses/1218051)
 [![](https://img.shields.io/badge/labs-401n4-green.svg)](https://github.com/codefellows-seattle-javascript-401n4)
 [![](https://img.shields.io/badge/slack-401n4-blue.svg)](https://codefellows.slack.com/messages/C70PNB5SA/team/U5F993CKF/)
-[![](https://img.shields.io/badge/videos-401d16-red.svg)](https://www.youtube.com/playlist?list=PLVngfM2hsbi_XxroYqDZ2AVDhatkVmFap)
 
 
 # Welcome
