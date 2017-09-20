@@ -1,0 +1,15 @@
+{
+  "name": "01-node-ecosystem",
+  "version": "0.0.1",
+  "description": "this will be sooooo cool",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "author": "john@codefellows.com",
+  "license": "ISC",
+  "devDependencies": {
+    "expect": "^21.1.0",
+    "mocha": "^3.5.3"
+  }
+}
