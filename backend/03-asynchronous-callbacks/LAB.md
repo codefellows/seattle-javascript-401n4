@@ -1,48 +1,39 @@
-![CF](https://camo.githubusercontent.com/70edab54bba80edb7493cad3135e9606781cbb6b/687474703a2f2f692e696d6775722e636f6d2f377635415363382e706e67) 03: Parallel File Processing
-===
+![cf](https://i.imgur.com/7v5ASc8.png) lab-03-fs-readfile
+======
 
-## Submission Instructions
-* Work in a fork of this repository
-* Work in a branch on your fork
-* Write all of your code in a directory named `lab-` + `<your name>` **e.g.** `lab-susan`
-* Open a pull request to this repository
-* Submit on canvas a question and observation, how long you spent, and a link to your pull request
+## To Submit this Assignment
+  * fork this repository
+  * write all of your code in a directory named `lab-` + `<your name>` **e.g.** `lab-duncan`
+  * push to your repository
+  * submit a pull request to this repository
+  * submit a link to your PR in canvas
+  * write a question and observation on canvas
 
-## Resources  
-  * [fs module docs](https://nodejs.org/api/fs.html)
+## Configuration
+* Include the following files
+* README.md
+* .gitignore
+* .eslintignore
+* .eslintrc
+* .package.json
+* Add a test and lint script to your package.json
 
-## Configuration 
-Configure the root of your repository with the following files and directories. Thoughfully name and organize any aditional configuration or module files.
-* **README.md** - contains documentation
-* **.gitignore** - contains a [robust](http://gitignore.io) `.gitignore` file 
-* **.eslintrc** - contains the course linter configuratoin
-* **.eslintignore** - contains the course linter ignore configuration
-* **package.json** - contains npm package config
-  * create a `lint` script for running eslint
-  * create a `test` script for running tests
-* **lib/** - contains module definitions
-* **assets/** - contains the text files used by the program
-* **\_\_test\_\_/** - contains unit tests
+## Description:
+* create module `lib/print-files` with a function that takes an array of three filepaths and a callback 
+  * it should have a function signature (paths, callback) => undefined
+  * expect the callback function signature to be (err, data) => undefined
+  * read the three files in order 
+  * on success pass an array of the contents of the files the data param of the callback `callback(null, data)`  
+  * on failure pass and error in to the callback `callback(err)`
+* create an `index.js` that calls your function with three paths from process.argv
+  and then logs the contents of the three files to the screen
+  * (your console.log should be  in the index.js file not in your print-files function)
 
-## Feature Tasks  
-#### Reader Module
-In the lib/ directory create a reader.js module that exports a single function. The reader module should take an array of three file paths and resolve a mapped array of strings loaded from each file using an error-first callback. The string data should be in the same order as the file path data (mapped). If an error occurs it should immediatly reject the error using the callback and stop execution.
+# Documentation
+* Write a description of your code in your readme
 
-* The reader module should have the function signature `(paths, callback) => undefined`
-* On a failure the reader module should invoke the callback with an error `callback(error)`
-* On success the reader module should invoke the callback with null as the first paramiter, and the result as the second paramiter `callback(null, result)`
-
-## Testing  
-#### Reader Module Tests
-* Use BDD `describe` and `test` methods to define discriptive tests and increase readablity
-* Each `test` callback should aim to test a small well defined feature of a function
-* Write tests to ensure the reader function rejects errors with invalid file paths
-* Write tests to ensure the reader function correctly resolves mapped string data for an array of file paths
-
-##  Documentation
-In your README.md describe the exported values of each module you have defined. Every function description should include it's airty (expected number of paramiters), the expected data for each paramiter (data-type and limitations), and it's behavior (for both valid and invalued use). Feel free to write any additional information in your README.md.
-
-## Bonus 1pt
-Write the reader function recursivly so that it will be able to support 0 or more paths.
-
+## Bonus 2pts
+* Write tests that guarantee that the files are logged in order.
+* You will also need to look up and implement async testing, making sure that you are not getting "false positives" (tests that are passing but shouldn't be).
+  * hint read mocha docs    
 
