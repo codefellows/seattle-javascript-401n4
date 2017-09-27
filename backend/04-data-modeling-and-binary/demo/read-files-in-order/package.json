@@ -1,0 +1,19 @@
+{
+  "name": "read-files-in-order",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "expect": "^21.2.0",
+    "mocha": "^3.5.3"
+  }
+}
