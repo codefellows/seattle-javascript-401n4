@@ -1,14 +1,18 @@
 'use strict';
 
 let router = module.exports = exports = {};
-router.routes = {
-  'GET': {},
-  'POST': {},
-  'PUT': {},
-  'PATCH': {},
-  'DELETE': {}
-};
+router.routes = {};
+let methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE', 'HEAD'];
 
-router.get = function(pathname, callback) {
-  router.routes['GET'][pathname] = callback;
+methods.forEach((method) => {
+  router.routes[method] = {};
+  router[method.toLowerCase()] = function(pathname, callback) {
+    router.routes[method][pathname] = callback;
+  };
+});
+
+router.fourOhFour = function(req, res) {
+  res.writeHead(404, {'Content-Type': 'text/plain'});
+  res.write('could not find page');
+  res.end();
 };
