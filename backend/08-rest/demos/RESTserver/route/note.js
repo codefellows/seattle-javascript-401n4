@@ -3,8 +3,7 @@
 const Note = require('../model/note.js');
 const router = require('../lib/router.js');
 
-const databaseFile = __dirname + "/../model/data/notes.dat";
-const storage = require("../lib/storage")(databaseFile);
+let notes = {};
 
 let sendStatus = (res, status, text) => {
     res.writeHead(status);
@@ -17,7 +16,7 @@ let sendJSON = (res, status, data) => {
         'Content-Type':'application/json'        
     });
     res.end(JSON.stringify(data));
-};
+}
 
 router.post('/api/notes', (req,res) => {
     
@@ -28,11 +27,10 @@ router.post('/api/notes', (req,res) => {
         return sendStatus(res, 400, "Missing Content");
     }
     
-    let note = new Note(req.body); 
+    let note = new Note(req.body);
+    notes[note.id] = note;
     
-    storage.saveItem(note)
-       .then( item => sendJSON(res, 201, item) )
-       .catch( err => sendStatus(res, 500, err) );
+    sendJSON(res, 201, note);
     
 });
 
@@ -42,30 +40,33 @@ router.get('/api/notes', (req,res) => {
     let id = req.url && req.url.query && req.url.query.id;
     
     if ( id ) { 
-        storage.getItem(id)
-           .then(item => sendJSON(res, 200, item))
-           .catch( err => sendStatus(res, 500, err));
+        if ( notes[id] ) { 
+            sendJSON(res, 200, notes[id]);
+        }
+        else { 
+            sendStatus(res, 404, "Note Not Found");
+        }
     }
     else {
-        
-        storage.getItems()
-          .then(allNotes => sendJSON(res, 200, allNotes) )
-          .catch(err => sendStatus(res, 404, err) )
-           
+        let allNotes = {notes:notes};
+        sendJSON(res, 200, allNotes);
     }
 });
 
-
-router.delete("/api/notes", (req,res) => {
+router.delete('/api/notes', (req,res) => {
     
     let id = req.url && req.url.query && req.url.query.id;
     
-    if ( id ) { 
-        
-        storage.deleteItem(id)
-           .then(sendJSON(res, 200, "OK"))
-           .catch(err => sendStatus(res, 500, err));
-           
+    if ( id  ) { 
+        if ( notes[id] ) { 
+            delete notes[id];
+            sendJSON(res, 200, notes[id]);
+        }
+        else { 
+            sendStatus(res, 404, "Note Not Found");
+        }
     }
-    
+    else { 
+        sendStatus(res, 400, "Note ID Required");
+    }
 });
