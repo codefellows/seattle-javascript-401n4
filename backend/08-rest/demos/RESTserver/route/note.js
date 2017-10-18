@@ -3,8 +3,7 @@
 const Note = require('../model/note.js');
 const router = require('../lib/router.js');
 
-const databaseFile = __dirname + "/../model/data/notes.dat";
-const storage = require("../lib/storage")(databaseFile);
+let notes = {};
 
 let sendStatus = (res, status, text) => {
     res.writeHead(status);
@@ -28,44 +27,55 @@ router.post('/api/notes', (req,res) => {
         return sendStatus(res, 400, "Missing Content");
     }
     
-    let note = new Note(req.body); 
+    let note = new Note(req.body);
+    notes[note.id] = note;
     
-    storage.saveItem(note)
-       .then( item => sendJSON(res, 201, item) )
-       .catch( err => sendStatus(res, 500, err) );
+    sendJSON(res, 201, note);
+    
+});
+
+router.post('/api/notes/init', (req,res) => {
+   
+   notes = {};
+   
+   sendStatus(res, 200, "Reset Notes");
     
 });
 
 
 router.get('/api/notes', (req,res) => {
     
+    console.log(req.url);
     let id = req.url && req.url.query && req.url.query.id;
     
     if ( id ) { 
-        storage.getItem(id)
-           .then(item => sendJSON(res, 200, item))
-           .catch( err => sendStatus(res, 500, err));
+        if ( notes[id] ) { 
+            sendJSON(res, 200, notes[id]);
+        }
+        else { 
+            sendStatus(res, 404, "Note Not Found");
+        }
     }
     else {
-        
-        storage.getItems()
-          .then(allNotes => sendJSON(res, 200, allNotes) )
-          .catch(err => sendStatus(res, 404, err) )
-           
+        sendJSON(res, 200, notes);
     }
 });
 
-
-router.delete("/api/notes", (req,res) => {
+router.delete('/api/notes', (req,res) => {
     
     let id = req.url && req.url.query && req.url.query.id;
     
-    if ( id ) { 
-        
-        storage.deleteItem(id)
-           .then(sendJSON(res, 200, "OK"))
-           .catch(err => sendStatus(res, 500, err));
-           
+    if ( id  ) { 
+        if ( notes[id] ) { 
+            delete notes[id];
+            sendJSON(res, 200, notes[id]);
+        }
+        else { 
+            sendStatus(res, 404, "Note Not Found");
+        }
+    }
+    else { 
+        sendStatus(res, 400, "Note ID Required");
     }
     
 });

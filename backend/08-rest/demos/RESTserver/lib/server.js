@@ -9,6 +9,10 @@ let isRunning = false;
 // Just get a server running
 const app = http.createServer( router.route );
 
+// That is the same as ... 
+// const server = http.createServer();
+// server.on('request', (request, response) => { ... }
+
 module.exports = {
     start: (port) => {
         
