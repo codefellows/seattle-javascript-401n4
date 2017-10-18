@@ -16,7 +16,7 @@ let sendJSON = (res, status, data) => {
         'Content-Type':'application/json'        
     });
     res.end(JSON.stringify(data));
-}
+};
 
 router.post('/api/notes', (req,res) => {
     
@@ -34,9 +34,18 @@ router.post('/api/notes', (req,res) => {
     
 });
 
+router.post('/api/notes/init', (req,res) => {
+   
+   notes = {};
+   
+   sendStatus(res, 200, "Reset Notes");
+    
+});
+
 
 router.get('/api/notes', (req,res) => {
     
+    console.log(req.url);
     let id = req.url && req.url.query && req.url.query.id;
     
     if ( id ) { 
@@ -48,8 +57,7 @@ router.get('/api/notes', (req,res) => {
         }
     }
     else {
-        let allNotes = {notes:notes};
-        sendJSON(res, 200, allNotes);
+        sendJSON(res, 200, notes);
     }
 });
 
@@ -69,4 +77,5 @@ router.delete('/api/notes', (req,res) => {
     else { 
         sendStatus(res, 400, "Note ID Required");
     }
+    
 });

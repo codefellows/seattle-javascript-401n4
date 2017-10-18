@@ -6,12 +6,15 @@ const parser = require("./parse-request");
 // Store route handlers for each of the verbs ...
 /*
     i.e.
+    POST: {
+        "/api/notes" : (req, res) => {...},
+        "/api/notes/init": (req, res) => {...}
+    },
     GET: {
-        "/api/note" : (req, res) => {},
-        "/api/calendar" : (req, res) => {},
-        "/api/people" : (req, res) => {},
-        "/api/cars" : (req, res) => {},
-        "/api/drinks" : (req, res) => {}, 
+        "/api/notes" : (req, res) => {...}
+    },
+    DELETE: {
+        "/api/notes" : (req, res) => {...}
     }
 */
 const routeHandlers = {
