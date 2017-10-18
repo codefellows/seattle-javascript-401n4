@@ -1,0 +1,55 @@
+Mock Interview #1
+
+Questions: 
+
+Behavioral: Think about a project that you’ve completed and delivered.  What is the one thing you’d most like to change about it? Briefly, what would your approach be to implementing this change?
+
+Code
+We’re working in a production API. 10k users sharing the module.
+Write a method that will return the highest number from an array.
+  - Write a method that will return the lowest number from an array.
+  - Write a method that will return the median number from an array.
+
+Coding & Interview Keys: 
+	Modularity.  API signature consistency
+	Did we think about testing?
+	Were we questioned on the requirements?
+	How did the candidate note what they had to do (write test cases)
+	Did the candidate pseudocode
+	Where they talking through it?
+	Were they confident?
+	Shake everyone’s hand
+	Don’t question yourself or ask the interviewer “can i …?” questions.  Got to be “I’m going to” and let them tell you no.
+	
+General Notes:
+	
+	About 1/2 of the class got most of it done
+	A lot of people reference their 301 project as a class project (sell it like its real)
+	Not everyone loved the project they gave the elevator pitch on.  Ownership and pride are huge
+	Two people emailed me back with the solution.  HUGE
+		How many of you went and did that?
+	Body Language - Looking at the floor instead of up (I’m lost vs I’m trying to remember)
+	Lots of folks trying to dive into the perfect JS method (filter, reduce, etc) and getting lost in the syntax.  If you don’t know it, don’t try it.  It costs you precious time and you lose the interviewer
+	Sometimes interviewers ask you questions to test how confident you are even if you have it right
+	Lots of good name dropping (should I use spread?  Maybe reduce is better than filter here)
+
+	Lets talk about approach
+
+	A good place to start is with the function signature that gets the requirements so that you have a solid place to start
+	Within … use comments as pseudocode to help you figure it out
+
+		let getHighest = (arrayOfNumbers) => {
+
+			// do I have an array?
+
+			// Set an initial value for “highest”
+
+			// analyze the array and set “highest” somehow
+
+			return highest;
+		}
+	
+
+
+Great presentation from Gayle McDowell
+https://docs.google.com/presentation/d/1s8aju7iJ1sdAJGsj21TKs5NEFB_fcvnONk18oS7BwKs/edit#slide=id.g249e6522fc_0_105
