@@ -40,7 +40,7 @@ module.exports = {
     },
     route: (req, res) => {
         // parse the request
-        parser(req)
+        return parser.parse(req)
             .then( (req) => {
                 // Find the handler
                 let handler = routeHandlers[req.method][req.url.pathname];

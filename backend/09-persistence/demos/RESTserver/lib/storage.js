@@ -26,7 +26,10 @@ class Storage {
             if( !id ) { reject("No ID Provided"); }
            
             this.getItems()
-                .then( data => resolve(data[id]) )
+                .then( data => {
+                    if ( data[id] ) { resolve(data[id]); }
+                    else { reject("ID Not Found"); }
+                })
                 .catch( err => reject(err) );
             
         });
@@ -59,8 +62,11 @@ class Storage {
                     if( data[id] ) {
                         delete data[id];
                         fs.outputJson(this.databaseFile, data)
-                          .then( () => resolve() )
+                          .then( () => resolve(true) )
                           .catch( err => reject(err) );
+                    }
+                    else {
+                        reject("Invalid ID");
                     }
                 })
                 .catch( err => reject(err) );

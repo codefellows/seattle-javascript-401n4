@@ -3,7 +3,9 @@
 const url = require('url');
 const queryString = require('querystring');
 
-module.exports = (req) => {
+let Parser = module.exports = {};
+
+Parser.parse = (req) => {
     
     return new Promise( (resolve, reject) => {
         

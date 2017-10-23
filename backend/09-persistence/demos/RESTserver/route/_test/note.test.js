@@ -27,35 +27,19 @@ jest.spyOn(fs, 'pathExists').mockImplementation(mockPathExists);
 
 const storage = require("../lib/storage")("foo");
 
-describe("Storage Module", () => {
+describe("Note Route", () => {
     
-    describe("saveItem()", () => {
+    describe("registers routes", () => {
        
-       it("returns the created item when a valid item is saved", () => {
+       it("", () => {
            
-           let thing = { 
-               id: 1,
-               name:"house",
-               size:"large"
-           };
-           
-           return storage.saveItem(thing)
-             .then( (res) => {
-                 expect(res).toEqual(thing);
-             })
-             .catch()
+
             
        });
        
-       it("rejects when we try to create an invalid item", () => {
+       it("", () => {
            
-           return storage.saveItem()
-             .then( (res) => {
-                 expect(res).toBeFalsy()
-             })
-             .catch( (err) => {
-                 expect(err).toBeTruthy()
-             })
+
             
        });
         
