@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+</head>
+<body>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script>
+    $.get('http://localhost:3000/stuff')
+      .then((result) => {
+        console.log(result);
+        $('body').prepend(result);
+      }, (err) => console.log(err));
+  </script>
+</body>
+</html>
