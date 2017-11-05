@@ -30,19 +30,15 @@ authRouter.get('/signin', basicHTTP, (req, res, next) => {
 });
 
 
-authRouter.get('/moneyFromThisPerson', bearerAuthentication, (req,res,next) => {
+authRouter.get('/showMetheMoney', bearerAuthentication, (req,res,next) => {
   
-  res.send(200, "ID " + req.userId);
-  
-  return User.findTheMoney(req.userId);
-  
+  User.findOne({_id: req.userId})
+    .then(user => res.send(`${user.username} has lots of money`))
+    .catch(next);
   
   // OPTION 1
   // Get a USER or a NULL from the bearerAuth ...
   // send out their balance
-  
-  
-  
   
   // OPTION 2
   // Check that the JWT is valid

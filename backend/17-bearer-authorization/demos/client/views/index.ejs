@@ -1,0 +1,82 @@
+<!DOCTYPE html>  
+<html lang="en">  
+  <head>
+    <meta charset="utf-8">
+    <title>Auth Example</title>
+    <link rel="stylesheet" href="/material/material-components-web.css">
+  </head>
+  
+  <body style="margin:3% 30%" class="mdc-typography--body1">
+      
+    <% if(loggedIn) { %>
+    
+           <div class="mdc-card demo-card">
+            <form action="/login" method="post">
+            <section class="mdc-card__primary">
+              <h1 class="mdc-card__title mdc-card__title--large"><%= loginMessage %></h1>
+            </section>
+            <section class="mdc-card__supporting-text">
+            </section>
+            <section class="mdc-card__actions">
+              <a href="/money?session=<%= token %>" class="mdc-button mdc-button--compact mdc-card__action">Show Me The Money!</button>
+            </section>
+          </form>
+          </div>
+          
+    <% } else { %>
+    
+          <div class="mdc-card demo-card">
+            <form action="/login" method="post">
+            <section class="mdc-card__primary">
+              <h1 class="mdc-card__title mdc-card__title--large">Login</h1>
+              <h2 class="mdc-card__subtitle"><%= loginMessage %></h2>
+            </section>
+            <section class="mdc-card__supporting-text">
+                  <div>
+                    Username: <input name="username" type="text" />
+                  </div>
+                  <div>
+                    Password: <input name="password" type="password" />
+                  </div>
+            </section>
+            <section class="mdc-card__actions">
+              <input class="mdc-button mdc-button--compact mdc-card__action" type="submit" value="Login" />
+            </section>
+          </form>
+          </div>
+          
+          <% if(! created ) { %>
+          
+          <br /><br /><br />
+          
+          <div class="mdc-card demo-card">
+            <form action="/signup" method="post">
+            <section class="mdc-card__primary">
+              <h1 class="mdc-card__title mdc-card__title--large">Create Account</h1>
+              <h2 class="mdc-card__subtitle"><%= loginMessage %></h2>
+            </section>
+            <section class="mdc-card__supporting-text">
+                  <div>
+                    Username: <input name="username" type="text" />
+                  </div>
+                  <div>
+                    Password: <input name="password" type="password" />
+                  </div>
+            </section>
+            <section class="mdc-card__actions">
+              <input class="mdc-button mdc-button--compact mdc-card__action" type="submit" value="Login" />
+            </section>
+          </form>
+          </div>          
+        
+        <% } %>
+    
+    <% } %>
+    
+    
+    </div>
+    
+    <script src="/material/material-components-web.js"></script>
+    <script>mdc.autoInit()</script>
+  </body>
+</html>  

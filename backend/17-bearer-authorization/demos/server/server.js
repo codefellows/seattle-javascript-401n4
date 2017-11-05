@@ -13,4 +13,4 @@ app.use((err, req, res, next) => {
   res.status(500 || err.statusCode).send(err.message || 'server error');
 });
 
-app.listen(process.env.PORT || 3000);
+app.listen(3000);

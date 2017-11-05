@@ -1,0 +1,32 @@
+<!DOCTYPE html>  
+<html lang="en">  
+  <head>
+    <meta charset="utf-8">
+    <title>Auth Example</title>
+    <link rel="stylesheet" href="/material/material-components-web.css">
+  </head>
+  <body class="mdc-typography--body1">
+    
+
+           <div class="mdc-card demo-card">
+            <form action="/login" method="post">
+            <section class="mdc-card__primary">
+              <h1 class="mdc-card__title mdc-card__title--large">Who has the money?</h1>
+            </section>
+            <section class="mdc-card__supporting-text">
+              
+                <% if(loggedIn) { %>
+                  <%= message %>      
+                <% } else { %>
+                  Access Denied
+                <% } %>              
+              
+            </section>
+          </form>
+          </div>
+    
+    
+    <script src="/material/material-components-web.js"></script>
+    <script>mdc.autoInit()</script>
+  </body>
+</html>  

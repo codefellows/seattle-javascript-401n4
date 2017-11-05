@@ -21,10 +21,6 @@ module.exports = (req,res,next) => {
     let decodedToken = jwt.verify(token, secret);
     req.userId = decodedToken.id;
     
-    // User.findOne({_id:decodedToken.id})
-    //     .then(user => {
-    //         req.userId = user._id;
-    //         next();
-    //     })
-    //     .catch(next);
+    next();
+    
 };
