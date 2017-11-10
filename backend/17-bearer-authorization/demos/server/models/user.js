@@ -17,6 +17,35 @@ userSchema.methods.generateHash = function(password) {
     });
 };
 
+userSchema.methods.genHash = function(password) {
+  return new Promise((resolve, reject) => {
+    bcrypt.hash(password, 10, (err, hash) => {
+      if (err) return reject(err);
+      resolve(hash);
+    }) 
+  })
+  .then(hash => {
+    this.password = hash;
+    return this;
+  });
+};
+
+userSchema.methods.genHashCb = function(password, callback) {
+  bcrypt.hash(password, 10, (err, hash) => {
+    if (err) callback(err);
+    this.password = hash;
+    callback(null, this);
+  });
+};
+
+//newUser.genHashCb(password, function(err, user) {
+//  if (err) res.status(500);
+//  user.save(function(err, data) {
+//    if(err) return res.status(500);
+//      res.send(data); 
+//  });
+//});
+
 userSchema.methods.comparePassword = function(password) {
   return bcrypt.compareAsync(password, this.password)
     .then(res => {
