@@ -8,8 +8,8 @@ process.env.MONGODB_URI = 'mongodb://localhost/testing'
 process.env.CORS_ORIGIN = 'http://localhost:8080'
 process.env.IMAGECLOUD_SECRET = 'sometotallysecretthing'
 process.env.AWS_BUCKET='johnnycloud'
-process.env.AWS_ACCESS_KEY_ID='AKIAISZIX2IQENZDAG3A'
-process.env.AWS_SECRET_ACCESS_KEY='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'
+process.env.AWS_ACCESS_KEY_ID='SECRET'
+process.env.AWS_SECRET_ACCESS_KEY='SECRETER'
 
 awsSDKMock.mock('S3', 'upload', (params, callback) => {
   if(!params.Key || !params.Bucket || !params.Body || !params.ACL)
