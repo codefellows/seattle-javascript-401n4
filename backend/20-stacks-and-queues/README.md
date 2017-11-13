@@ -1,4 +1,4 @@
-![cf](http://i.imgur.com/7v5ASc8.png) 15: Stacks and Queues
+![cf](http://i.imgur.com/7v5ASc8.png) 20: Stacks and Queues
 ===
 
 # Learning Objectives
