@@ -69,3 +69,7 @@ Session.vim
 
 # auto-generated tag files
 tags
+
+# React/Webpack files
+*.map
+.sass-cache

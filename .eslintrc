@@ -1,11 +1,10 @@
 {
   "rules": {
     "react/prop-types": [0],
-    "quotes": ["error", "single", { "allowTemplateLiterals": true }],
     "comma-dangle": ["error", "always-multiline"],
     "no-console": "off",
     "no-unused-vars": "off",
-    "indent": [ "error", 2 ],
+    "indent": [ "error", 4 ],
     "semi": ["error", "always"]
   },
   "plugins": [ "react" ],
@@ -26,7 +25,10 @@
   "globals": {
     "__API_URI__": false,
     "__TITLE__": false,
-    "__DEBUG__": false
+    "__DEBUG__": false,
+    "describe": true,
+    "expect": true,
+    "it": true
   },
   "extends": [
     "eslint:recommended"
