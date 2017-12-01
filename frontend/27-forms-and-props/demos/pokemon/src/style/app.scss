@@ -1,0 +1,63 @@
+@import "./mixins.scss";
+
+$baseDark:#000;
+
+body {
+    color: #000;
+    &:after {
+        @include shadow-bottom-fuzzy;
+    }
+}
+
+#pokeWrapper {
+    display:flex;
+    flex-direction:row;
+    width:100%;
+}
+
+#pokemonList {
+    
+    background:#f5f5f5;
+    flex:1;
+    padding:1em;
+    
+    label {
+        cursor:pointer;
+        display:block;
+        margin:.5em 0;
+        text-transform:capitalize
+    }
+    
+    input[type=radio] {
+        
+        position: absolute;
+        visibility: hidden;
+        display: none;
+ 
+         &:checked + label {       
+            background: #ccc;
+            border-radius: 10px;
+            color: #fff;
+            padding:.5em;
+        }
+    }
+    
+
+}
+
+#pokemonContainer {
+    
+    flex:3;
+    padding:3em;
+    &.water {
+        background:#fff url('/src/images/water.jpg') no-repeat;
+    }
+}
+
+
+div.box {
+    @include circle(2em);
+    @include grey-placemat;
+    @include box-double(#ccc);
+    margin:50px auto;
+}
