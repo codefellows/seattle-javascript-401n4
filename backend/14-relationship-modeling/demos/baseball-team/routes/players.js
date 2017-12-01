@@ -13,7 +13,7 @@ playerRouter.post('/players', jsonParser, (req,res,next) => {
            .catch(err => next(err));
 });
 
-playerRouter.delete('/Player/:id', (req,res,next) => {
+playerRouter.delete('/player/:id', (req,res,next) => {
     let playerId = req.params.id;
     
     // TODO: Lookup the Player first so that we can include it's name in the response
