@@ -1,5 +1,66 @@
+@mixin circle($size) {
+    border-radius:50%;
+    height:$size;
+    line-height:$size;
+    padding:$size;
+    text-align:center;
+    width:$size;
+}
+
 body {
     background: #f5f5f5;
     color: #000;
+    font-size:16px;
 }
 
+#counterWrapper {
+    
+    align-items:center;
+    display:flex;
+    justify-content:center;
+    flex-direction:row;
+    
+    #counter {
+        
+        @include circle(2em);
+        background:#eee;
+        border:4px double #ccc;
+        font-size:1.5em;
+        font-weight:900;
+        order: 2;
+        
+        &.positive {
+            color:blue;
+        }
+        
+        &.negative {
+            color:red;
+        }
+        
+    }
+    
+    #up, #down {
+        @include circle(1em);
+        border:1px solid #ccc;
+        color:#000;
+        display:block;
+        text-decoration:none;
+    }
+    
+    #up {
+        order:3;
+        &:hover {
+            background:blue;
+            color:#fff;
+        }
+    }
+    
+    #down {
+        order: 1;
+        &:hover {
+            background:red;
+            color:#fff;
+        }
+    }
+    
+}

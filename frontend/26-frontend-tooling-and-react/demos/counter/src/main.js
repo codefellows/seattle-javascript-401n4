@@ -23,31 +23,40 @@ class App extends React.Component {
         
         this.handleDown = this.handleDown.bind(this);
         this.handleUp = this.handleUp.bind(this);
+        this.updateState = this.updateState.bind(this);
         
         // SG: Make a reset value
         // SG: Care about the polarity
         this.state = {
-            counter:0
+            counter:0,
+            polarity:"neutral"
         };
     }
     
     handleUp(e) {
-        let counter = this.state.counter + 1;
-        this.setState({counter});
+        this.updateState(this.state.counter + 1);
     }
     
     handleDown(e) {
-        let counter = this.state.counter - 1;
-        this.setState({counter});
+        this.updateState(this.state.counter - 1);
+    }
+    
+    updateState(counter) {
+        let polarity = null;
+        if ( counter > 0 ) { polarity = "positive"; }
+        if ( counter < 0 ) { polarity = "negative"; }
+        this.setState({counter, polarity});
     }
     
     render() {
         return (
             <div>
                 <Header />
-                <div className="counter">{this.state.counter}</div>
-                <a href="#" onClick={this.handleUp} className="up">U</a>
-                <a href="#" onClick={this.handleDown} className="down">D</a>
+                <div id="counterWrapper">
+                    <div id="counter" className={this.state.polarity}>{this.state.counter}</div>
+                    <a href="#" onClick={this.handleUp} id="up">U</a>
+                    <a href="#" onClick={this.handleDown} id="down">D</a>
+                </div>
             </div>
         )
     }
