@@ -13,6 +13,21 @@ body {
     display:flex;
     flex-direction:row;
     width:100%;
+    
+    &.loading {
+        
+       &:after {
+           background:#000;
+           bottom:0;
+           content:' ';
+           left:0;
+           opacity:.5;
+           position:absolute;
+           right:0;
+           top:0;
+       } 
+        
+    }
 }
 
 #pokemonList {
@@ -42,16 +57,40 @@ body {
         }
     }
     
-
 }
 
 #pokemonContainer {
     
     flex:3;
     padding:3em;
+    
     &.water {
-        background:#fff url('/src/images/water.jpg') no-repeat;
+        background:#EBF5FB;
     }
+    
+    &.grass {
+       background:#DAF7A6; 
+    }
+    
+    &.fire {
+        background:#FDEDEC;
+    }
+    
+    &.bug {
+       background:#FDEBD0; 
+    }
+    
+    h2 {
+        text-transform:uppercase;
+    }
+    
+    #detailWrapper {
+        display:flex;
+        flex-direction:row;
+        flex-wrap:wrap;
+    }
+    
+
 }
 
 

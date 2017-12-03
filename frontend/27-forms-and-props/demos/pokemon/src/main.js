@@ -2,12 +2,12 @@ import './style/app.scss';
 
 import React from 'react';
 import ReactDom from 'react-dom'
-import superagent from 'superagent';
 
 import Header from './components/header'
 import Footer from './components/footer'
 import PokemonList from './components/pokemon-list'
 import PokemonDetail from './components/pokemon-detail'
+import MagicSauce from './lib/__.js';
 
 const pokemonAPI = "https://pokeapi.co/api/v2/pokemon/";
 
@@ -16,54 +16,55 @@ class App extends React.Component {
     constructor(props) { 
         super(props);
         this.state = {
+            loading: "loading",
             pokemonList: [],
-            pokemon: {}
+            pokemon: {},
         }
         
         this.selectPokemon = this.selectPokemon.bind(this);
+        
     }
     
     componentDidMount() {
         console.log("__STATE__", this.state);
     }
     
+    
     componentWillMount() {
         
-        let pokemonList = localStorage.getItem('pokemonList');
+        let loading = "loading";
+        this.setState({loading})
         
-        if ( pokemonList ) { 
-           pokemonList = JSON.parse(pokemonList);
-           this.setState({pokemonList});
-        }
-        else { 
-            superagent.get(pokemonAPI)
-                .then(result => {
-                    let pokemonList = result.body.results;
-                    localStorage.setItem("pokemonList", JSON.stringify(pokemonList))
-                    this.setState({pokemonList});
-                })
-                .catch(console.log);
-        }
+        MagicSauce.fetchData(pokemonAPI)
+            .then(data => {
+                loading = "";
+                let pokemonList = data.results;
+                this.setState({pokemonList, loading});
+            })
+
     }
     
     selectPokemon(pokemonURL) {
         
-        superagent.get(pokemonURL)
-            .then(result => {
-                let pokemon = result.body;
-                this.setState({pokemon});
-                
+        let loading = "loading";
+        this.setState({loading})
+        
+        MagicSauce.fetchData(pokemonURL)
+            .then(pokemon => {
+                loading = "";
+                this.setState({pokemon, loading});
             })
-            .catch(console.log);
         
     }
     
+    
     render() {
+        
         return (
             <div>
                 <Header />
                 
-                <div id="pokeWrapper">
+                <div id="pokeWrapper" className={this.state.loading}>
                 
                     <PokemonList 
                         pokemonList={this.state.pokemonList} 
@@ -71,7 +72,6 @@ class App extends React.Component {
                     />
                     
                     <PokemonDetail pokemon={this.state.pokemon} />
-
                 
                 </div>
                 
