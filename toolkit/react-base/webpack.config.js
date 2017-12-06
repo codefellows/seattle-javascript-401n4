@@ -11,6 +11,10 @@ module.exports = {
     // Load this and everythning it cares about
     entry: `${__dirname}/src/main.js`,
     
+    devServer: { 
+        historyApiFallback:true
+    },
+    
     devtool: 'source-map',
     
     // Stick it into the "path" folder with that file name

@@ -23,3 +23,17 @@ babel-preset-env    - Transpiles down the proper ES version
 babel-plugin-transform-object-rest-spread   - (gives us the … for objects)
 
 extract-text-webpack-plugin                 - Takes CSS code and turns it into a separate css bundle
+
+
+
+
+            <BrowserRouter>
+                <nav>
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/about/john">About</Link></li>
+                    </ul>
+                    <Route exact path="/" component={Home} />
+                    <Route path="/about/:who" component={About} />
+                </nav>
+            </BrowserRouter>
