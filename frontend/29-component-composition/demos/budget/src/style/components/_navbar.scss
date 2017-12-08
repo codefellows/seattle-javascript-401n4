@@ -1,0 +1,39 @@
+nav {
+    background:#414141;
+    height:2em;
+    line-height:2em;
+    width: 100%;
+   
+    ul {
+        display:flex;
+        flex-direction:row;
+        
+        li {
+            padding:0 1em;
+            position:relative;
+            width: 100px;
+        }
+        
+        li:hover {
+           background:#ccc;
+           
+           a {
+               color: #000;
+           }
+        }
+    }
+    
+    a {
+        text-decoration:none;
+        color:#fff;
+        
+        &:after {
+            bottom:0;
+            content:"";
+            left:0;
+            position:absolute;
+            right:0;
+            top:0;
+        }
+    }
+}

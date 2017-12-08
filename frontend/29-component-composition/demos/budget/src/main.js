@@ -1,4 +1,4 @@
-import './style/app.scss';
+import './style/main.scss';
 
 import React from 'react';
 import ReactDom from 'react-dom'
@@ -46,17 +46,16 @@ class App extends React.Component {
     render() {
         return (
             <div>
-                <Header appTitle="React App" />
+                <Header appTitle="Budget Calculator" />
 
                 <Navbar /> 
                 
                 <main>
                     <Route exact path='/' component={Home} />
                     <Route exact path='/expenses' component={() => <Expenses handler={this.updateTheBudget} app={this.app()}/>} /> </main>
-                    h
                 
                 <Footer>
-                    <p>&copy;2017 Me</p>
+                    <p>&copy;2017 401n4</p>
                 </Footer>
             </div>
         )

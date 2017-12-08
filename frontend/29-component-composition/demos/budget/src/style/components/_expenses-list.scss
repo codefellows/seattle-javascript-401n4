@@ -1,0 +1,29 @@
+.expenses-list {
+    
+    padding:1em;
+    
+    table {
+        
+        thead {
+            background:#000;
+            border: 1px solid #000;
+            color:$baseLight;
+        } 
+        
+        td {
+            border: 1px dashed #ccc;
+            padding:.5em 1em;
+            
+            a {
+                @include circle(.5em);
+                background: red;
+                color: #fff;
+                display:inline;
+                font-size:.5em;
+                text-decoration: none; 
+            }
+        }
+        
+    }
+    
+}

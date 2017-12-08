@@ -1,0 +1,30 @@
+.overlay {
+    
+    bottom:0;
+    left:0;
+    position:absolute;
+    right:0;
+    top:0;
+    z-index:100;
+    
+    &:after {
+        background:#000;
+        bottom:0;
+        content:' ';
+        left:0;
+        opacity:.5;
+        position:absolute;
+        right:0;
+        top:0;
+    }
+    
+    > .modal {
+        box-sizing:border-box;
+        margin:auto;
+        position:relative;
+        top:50%;
+        transform:translateY(-50%);
+        z-index:1000;
+    }
+    
+}

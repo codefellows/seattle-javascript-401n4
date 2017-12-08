@@ -1,6 +1,7 @@
 import React from 'react';
 
 import ExpenseForm from '../expense-form'
+import Modal from '../modal'
 import {renderIf} from '../../lib/__.js'
 
 class Expenses extends React.Component {
@@ -8,14 +9,44 @@ class Expenses extends React.Component {
     constructor(props) { 
         super(props);
         
+        this.state = {budget:0};
+        
         this.handleNewBudget = this.handleNewBudget.bind(this);
         this.handleNewExpense = this.handleNewExpense.bind(this);
+        this.closeModal = this.closeModal.bind(this);
+        this.deleteExpenseItem = this.deleteExpenseItem.bind(this);
     }
     
+    componentDidMount() {
+        console.log("__E_STATE__", this.state);
+    }
+    
+    deleteExpenseItem(e) {
+        e.preventDefault();
+        
+        let id = e.target.dataset['key'];
+        
+        this.props.app.setState( 
+            currentState => 
+                ( {expenses: currentState.expenses.filter( (expense,i) => {
+                    return expense.id !== id;
+                })}
+            )
+        )
+        
+    }
+    
+    closeModal() {
+        let showErrors = false;
+        this.props.app.setState({showErrors})
+    }
+    
+
     handleNewBudget(e) {
         e.preventDefault();
         let budget = e.target.querySelector('input[name=budget]').value;
         this.props.app.setState({budget});
+        // this.props.handler(budget);
     }
     
     handleNewExpense(expense) {
@@ -71,7 +102,7 @@ class Expenses extends React.Component {
                                     {
                                         this.props.app.state.expenses.map( (expense,i) =>
                                             <tr key={expense.id}>
-                                                <td><a href="#">x</a></td>
+                                                <td><a onClick={this.deleteExpenseItem} data-key={expense.id} href="#">x</a></td>
                                                 <td>{expense.name}</td>
                                                 <td>{expense.amount}</td>
                                             </tr>
@@ -86,6 +117,18 @@ class Expenses extends React.Component {
                     }
                     
                 </div>
+                
+                {
+                    renderIf(
+                        (remainingBudget < 0 && this.props.app.state.showErrors),
+                        <Modal close={this.closeModal}>
+                            <p>Whoa, Sailor!</p>
+                            <p>You are spending way too much</p>
+                        </Modal>
+                            
+                    )
+                }
+                    
            </div>
         )
             
