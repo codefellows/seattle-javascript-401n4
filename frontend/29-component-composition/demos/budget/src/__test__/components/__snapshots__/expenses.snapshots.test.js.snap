@@ -1,0 +1,453 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Expenses> does not render a modal if it has been previously dismmissed 1`] = `
+<div
+  id="budgetWrapper"
+>
+  <div
+    className="budget"
+  >
+    <h2>
+      Budget Summary
+    </h2>
+    <div
+      className="budgetSummary"
+    >
+      <h3>
+        Budget: 
+        10
+      </h3>
+      <h3>
+        Spent: 
+        11
+      </h3>
+      <h3>
+        Remaining: 
+        -1
+      </h3>
+    </div>
+    <form
+      onSubmit={[Function]}
+    >
+      <input
+        onChange={[Function]}
+        placeholder="Enter Budget Amount"
+        type="number"
+      />
+      <button>
+        Set Budget
+      </button>
+    </form>
+  </div>
+  <div
+    id="expensesWrapper"
+  >
+    <h2>
+      Expenses
+    </h2>
+    <form
+      id="expense-form"
+      onSubmit={[Function]}
+    >
+      <input
+        className="item"
+        name="name"
+        onChange={[Function]}
+        placeholder="Expense Item"
+        type="text"
+      />
+      <input
+        className="amount"
+        name="amount"
+        onChange={[Function]}
+        placeholder="Amount"
+        type="number"
+      />
+      <button
+        type="submit"
+      >
+        Add Expense
+      </button>
+    </form>
+    <div
+      class="expenses-list"
+    >
+      <table>
+        <thead>
+          <tr>
+            <th
+              colSpan="2"
+            >
+              Expense
+            </th>
+            <th>
+              Amount
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a
+                data-key={1}
+                href="#"
+                onClick={[Function]}
+              >
+                x
+              </a>
+            </td>
+            <td>
+              foo
+            </td>
+            <td>
+              5
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                data-key={2}
+                href="#"
+                onClick={[Function]}
+              >
+                x
+              </a>
+            </td>
+            <td>
+              bar
+            </td>
+            <td>
+              6
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Expenses> renders a modal when balance is <= 0 1`] = `
+<div
+  id="budgetWrapper"
+>
+  <div
+    className="budget"
+  >
+    <h2>
+      Budget Summary
+    </h2>
+    <div
+      className="budgetSummary"
+    >
+      <h3>
+        Budget: 
+        10
+      </h3>
+      <h3>
+        Spent: 
+        11
+      </h3>
+      <h3>
+        Remaining: 
+        -1
+      </h3>
+    </div>
+    <form
+      onSubmit={[Function]}
+    >
+      <input
+        onChange={[Function]}
+        placeholder="Enter Budget Amount"
+        type="number"
+      />
+      <button>
+        Set Budget
+      </button>
+    </form>
+  </div>
+  <div
+    id="expensesWrapper"
+  >
+    <h2>
+      Expenses
+    </h2>
+    <form
+      id="expense-form"
+      onSubmit={[Function]}
+    >
+      <input
+        className="item"
+        name="name"
+        onChange={[Function]}
+        placeholder="Expense Item"
+        type="text"
+      />
+      <input
+        className="amount"
+        name="amount"
+        onChange={[Function]}
+        placeholder="Amount"
+        type="number"
+      />
+      <button
+        type="submit"
+      >
+        Add Expense
+      </button>
+    </form>
+    <div
+      class="expenses-list"
+    >
+      <table>
+        <thead>
+          <tr>
+            <th
+              colSpan="2"
+            >
+              Expense
+            </th>
+            <th>
+              Amount
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a
+                data-key={1}
+                href="#"
+                onClick={[Function]}
+              >
+                x
+              </a>
+            </td>
+            <td>
+              foo
+            </td>
+            <td>
+              5
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                data-key={2}
+                href="#"
+                onClick={[Function]}
+              >
+                x
+              </a>
+            </td>
+            <td>
+              bar
+            </td>
+            <td>
+              6
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div
+    className="overlay"
+  >
+    <div
+      className="modal"
+    >
+      <p>
+        Whoa, Sailor!
+      </p>
+      <p>
+        You are spending way too much
+      </p>
+      <button
+        onClick={[Function]}
+      >
+        Close Me
+      </button>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Expenses> renders an expense list and the correct balance with a populated state 1`] = `
+<div
+  id="budgetWrapper"
+>
+  <div
+    className="budget"
+  >
+    <h2>
+      Budget Summary
+    </h2>
+    <div
+      className="budgetSummary"
+    >
+      <h3>
+        Budget: 
+        10
+      </h3>
+      <h3>
+        Spent: 
+        9
+      </h3>
+      <h3>
+        Remaining: 
+        1
+      </h3>
+    </div>
+    <form
+      onSubmit={[Function]}
+    >
+      <input
+        onChange={[Function]}
+        placeholder="Enter Budget Amount"
+        type="number"
+      />
+      <button>
+        Set Budget
+      </button>
+    </form>
+  </div>
+  <div
+    id="expensesWrapper"
+  >
+    <h2>
+      Expenses
+    </h2>
+    <form
+      id="expense-form"
+      onSubmit={[Function]}
+    >
+      <input
+        className="item"
+        name="name"
+        onChange={[Function]}
+        placeholder="Expense Item"
+        type="text"
+      />
+      <input
+        className="amount"
+        name="amount"
+        onChange={[Function]}
+        placeholder="Amount"
+        type="number"
+      />
+      <button
+        type="submit"
+      >
+        Add Expense
+      </button>
+    </form>
+    <div
+      class="expenses-list"
+    >
+      <table>
+        <thead>
+          <tr>
+            <th
+              colSpan="2"
+            >
+              Expense
+            </th>
+            <th>
+              Amount
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <a
+                data-key={1}
+                href="#"
+                onClick={[Function]}
+              >
+                x
+              </a>
+            </td>
+            <td>
+              foo
+            </td>
+            <td>
+              5
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <a
+                data-key={2}
+                href="#"
+                onClick={[Function]}
+              >
+                x
+              </a>
+            </td>
+            <td>
+              bar
+            </td>
+            <td>
+              4
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+`;
+
+exports[`<Expenses> renders with a clean state 1`] = `
+<div
+  id="budgetWrapper"
+>
+  <div
+    className="budget"
+  >
+    <h2>
+      Budget Summary
+    </h2>
+    <div
+      className="budgetSummary"
+    >
+      <h3>
+        Budget: 
+        0
+      </h3>
+      <h3>
+        Spent: 
+        0
+      </h3>
+      <h3>
+        Remaining: 
+        0
+      </h3>
+    </div>
+    <form
+      onSubmit={[Function]}
+    >
+      <input
+        onChange={[Function]}
+        placeholder="Enter Budget Amount"
+        type="number"
+      />
+      <button>
+        Set Budget
+      </button>
+    </form>
+  </div>
+  <div
+    id="expensesWrapper"
+  >
+    <h2>
+      Expenses
+    </h2>
+    <div
+      class="expenses-list"
+    />
+  </div>
+</div>
+`;

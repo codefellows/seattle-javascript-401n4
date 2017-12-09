@@ -29,8 +29,8 @@ class ExpenseForm extends React.Component {
         
         return (
             <form id="expense-form" onSubmit={this.handleNewExpense}>
-                <input placeholder="Expense Item" type="text" name="name" onChange={this.handleChange} />
-                <input placeholder="Amount" type="number" name="amount" onChange={this.handleChange} />
+                <input className="item" placeholder="Expense Item" type="text" name="name" onChange={this.handleChange} />
+                <input className="amount" placeholder="Amount" type="number" name="amount" onChange={this.handleChange} />
                 <button type="submit">Add Expense</button>
             </form>
         )

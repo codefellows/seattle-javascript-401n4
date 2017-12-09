@@ -3,7 +3,7 @@ import renderer from 'react-test-renderer';
 
 import Expenses from '../../components/expenses';
 
-xdescribe('<Expenses>', () => {
+describe('<Expenses>', () => {
   
   test('renders with a clean state', () => {
       

@@ -3,7 +3,7 @@ import {shallow} from 'enzyme';
 
 import ExpenseForm from '../../components/expense-form';
 
-describe('<Expenses />', () => {
+describe('<ExpenseForm />', () => {
   
   test('properly adds a new expense', () => {
     
