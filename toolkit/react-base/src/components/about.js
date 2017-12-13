@@ -5,7 +5,9 @@ class About extends React.Component {
     render() {
         
         return (
-           <div>About {this.props.match.params.who}</div> 
+            <div>
+                <h2>About {this.props.match.params.who}</h2>
+            </div> 
         )
             
     }

@@ -1,5 +1,5 @@
 nav {
-    background:#414141;
+    background:#000;
     height:2em;
     line-height:2em;
     width: 100%;
@@ -11,7 +11,7 @@ nav {
         li {
             padding:0 1em;
             position:relative;
-            width: 100px;
+            min-width: 100px;
         }
         
         li:hover {

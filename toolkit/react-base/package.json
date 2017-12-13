@@ -9,7 +9,10 @@
     "build": "webpack"
   },
   "jest": {
-    "setupFiles": ["<rootDir>/src/__test__/shim.js", "<rootDir>/src/__test__/setup.js"],
+    "setupFiles": [
+      "<rootDir>/src/__test__/shim.js",
+      "<rootDir>/src/__test__/setup.js"
+    ],
     "moduleNameMapper": {
       "\\.(scss)$": "<rootDir>/node_modules/jest-css-modules"
     }
@@ -32,7 +35,9 @@
     "react-devtools": "^3.0.0",
     "react-dom": "^16.2.0",
     "react-fontawesome": "^1.6.1",
+    "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",
+    "redux": "^3.7.2",
     "resolve-url-loader": "^2.2.0",
     "sass-loader": "^6.0.6",
     "superagent": "^3.8.1",
