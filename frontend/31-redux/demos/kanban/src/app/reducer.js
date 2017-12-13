@@ -21,7 +21,10 @@ export default (state=initialState, action) => {
             return [...state, payload];
 
          case "CATEGORY_UPDATE":
-            return state.map( (item,i) => item.id === payload.id ? payload : item )
+            return state.map( (item,i) => item.id === payload.id ? payload : item );
+
+         case "CATEGORY_DELETE":
+            return state.filter( (item,i) => item.id !== payload );
 
         default:
             return state;

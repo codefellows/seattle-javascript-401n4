@@ -19,13 +19,11 @@ class App extends React.Component {
         return (
             <div>
 
-                <Header appTitle="React App" />
-
                 <Navbar />
 
                 <main>
                     <Route exact path='/' component={Home} />
-                    <Route exact path='/categories' component={Categories} />
+                    <Route exact path='/project' component={Categories} />
                 </main>
 
                 <Footer>

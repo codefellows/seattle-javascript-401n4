@@ -11,7 +11,7 @@ class CategoryList extends React.Component {
             <div id="kanban-categories">
                 {
                     this.props.cats.map( (category,i) =>
-                        <CategoryItem handleUpdate={this.props.handleUpdate} key={category.id} category={category} />
+                        <CategoryItem handleDelete={this.props.handleDelete} handleUpdate={this.props.handleUpdate} key={category.id} category={category} />
                     )
                 }
 

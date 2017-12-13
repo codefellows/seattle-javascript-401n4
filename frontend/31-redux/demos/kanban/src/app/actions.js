@@ -20,3 +20,10 @@ export const categoryUpdate = (category) => {
         payload: category
     }
 }
+
+export const categoryDelete = (categoryId) => {
+    return {
+        type: "CATEGORY_DELETE",
+        payload: categoryId
+    }
+}
