@@ -1,0 +1,12 @@
+@import './theme/variables';
+
+@import './utilities/reset';
+
+@import './mixins/all';
+
+@import './components/app',
+        './components/header',
+        './components/footer',
+        './components/navbar',
+        './components/modal',
+        './components/categories'

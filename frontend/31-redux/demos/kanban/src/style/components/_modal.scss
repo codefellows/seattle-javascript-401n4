@@ -1,0 +1,8 @@
+.modal {
+    @include box-3d;
+    background:#ff0000;
+    color: #fff;
+    padding:$spaciousness;
+    text-align:center;
+    width: 350px;
+}
