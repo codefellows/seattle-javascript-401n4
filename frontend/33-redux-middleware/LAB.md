@@ -1,4 +1,4 @@
-![cf](https://i.imgur.com/7v5ASc8.png) 28: Redux Middleware
+![cf](https://i.imgur.com/7v5ASc8.png) 33: Redux Middleware
 ======
 
 ## Submission Instructions
