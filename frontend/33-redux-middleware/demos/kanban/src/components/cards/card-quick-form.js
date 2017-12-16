@@ -25,6 +25,9 @@ class CardQuickForm extends React.Component {
         e.preventDefault();
         e.target.reset();
         this.props.handler( Object.assign({}, this.state) );
+        if ( ! this.props.card ) {
+            this.setState({title:''});
+        }
     }
 
     render() {

@@ -66,6 +66,7 @@ class CardForm extends React.Component {
                     <label>
                         <span>Priority</span>
                         <select
+                            value={this.state.priority}
                             name="priority"
                             onChange={this.handleChange}
                         >

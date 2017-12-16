@@ -1,5 +1,11 @@
 const initialState = {};
 
+let validateCard = (card) => {
+    if ( ! card.title ) {
+        throw new Error("Missing Title");
+    }
+}
+
 export default (state=initialState, action) => {
 
     let {type, payload={}} = action;
@@ -16,13 +22,16 @@ export default (state=initialState, action) => {
             return newState;
 
         case "CARD_ADD":
+            validateCard(payload);
             return {...state, [categoryId]: [...categoryCards, payload]};
 
         case "CARD_DELETE":
+            validateCard(payload);
             let deleteCategoryCardList = categoryCards.filter( (card,i) => card.id !== id );
             return {...state, [categoryId]: deleteCategoryCardList};
 
         case "CARD_UPDATE":
+            validateCard(payload);
             let updateCategoryCardList = categoryCards.map( (card,i) => card.id === id ? payload : card );
             return {...state, [categoryId]: updateCategoryCardList};
 
