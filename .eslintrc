@@ -1,11 +1,13 @@
 {
   "rules": {
     "react/prop-types": [0],
-    "comma-dangle": ["error", "always-multiline"],
+    "comma-dangle": ["error", {
+        "arrays": "never",
+        "objects": "never"
+    }] 
     "no-console": "off",
     "no-unused-vars": "off",
     "indent": [ "error", 4 ],
-    "semi": ["error", "always"]
   },
   "plugins": [ "react" ],
   "parserOptions": {

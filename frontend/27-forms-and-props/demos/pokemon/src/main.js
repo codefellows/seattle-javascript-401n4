@@ -7,7 +7,7 @@ import Header from './components/header'
 import Footer from './components/footer'
 import PokemonList from './components/pokemon-list'
 import PokemonDetail from './components/pokemon-detail'
-import MagicSauce from './lib/__.js';
+import {fetchData} from './lib/__.js';
 
 const pokemonAPI = "https://pokeapi.co/api/v2/pokemon/";
 
@@ -35,7 +35,7 @@ class App extends React.Component {
         let loading = "loading";
         this.setState({loading})
         
-        MagicSauce.fetchData(pokemonAPI)
+        fetchData(pokemonAPI)
             .then(data => {
                 loading = "";
                 let pokemonList = data.results;
@@ -49,7 +49,7 @@ class App extends React.Component {
         let loading = "loading";
         this.setState({loading})
         
-        MagicSauce.fetchData(pokemonURL)
+        fetchData(pokemonURL)
             .then(pokemon => {
                 loading = "";
                 this.setState({pokemon, loading});
