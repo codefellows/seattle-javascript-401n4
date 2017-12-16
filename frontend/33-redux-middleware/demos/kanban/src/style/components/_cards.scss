@@ -1,0 +1,59 @@
+.category {
+
+    .cardForm {
+        width:80%;
+        margin:1em auto;
+
+        input {
+            width:100%;
+        }
+    }
+
+}
+
+.card {
+
+    @include box-halo-light;
+    background:#fff;
+    margin:1em;
+    padding:1em;
+
+
+    .cardForm {
+
+        label {
+            display:flex;
+            flex-direction:column;
+            justify-content: space-between;
+            margin:.75em;
+        }
+
+        .buttons {
+            margin:1.5em .75em;
+
+            button {
+                display:block;
+                margin-left:auto;
+            }
+        }
+
+    }
+
+    .actions {
+        border-top:1px solid #eee;
+        display:flex;
+        justify-content:space-between;
+        margin-top:.75m;
+        padding-top:.75em;
+
+        a {
+            color:#111;
+            text-decoration:none;
+
+            &:hover {
+                color:blue;
+            }
+        }
+    }
+
+}

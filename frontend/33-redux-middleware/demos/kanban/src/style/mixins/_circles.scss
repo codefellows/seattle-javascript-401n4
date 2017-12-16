@@ -1,0 +1,9 @@
+@mixin circle($size) {
+    border-radius: 50%;
+    display:block;
+    height:$size;
+    line-height:$size;
+    padding:$size;
+    text-align:center;
+    width:$size;    
+}
