@@ -11,30 +11,30 @@ import About from './about'
 import Todo from './todo/todo-container'
 
 class App extends React.Component {
-    
-    constructor(props) { 
+
+    constructor(props) {
         super(props);
     }
-    
+
     render() {
         return (
-            <div>
-            
+            <React.Fragment>
+
                 <Header appTitle="React App" />
 
-                <Navbar /> 
-                
+                <Navbar />
+
                 <main>
                     <Route exact path='/' component={Home} />
                     <Route exact path='/todo' component={ () => <Todo /> } />
                     <Route path='/about/:who' component={About} />
                 </main>
-                
+
                 <Footer>
                     <p>&copy;2017 401n4</p>
                 </Footer>
-                
-            </div>
+
+            </React.Fragment>
         )
     }
 }

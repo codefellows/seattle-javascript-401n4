@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import TodoForm from './todo-form';
 import TodoList from './todo-list';
 
-import {todoCreate,todoDelete,todoUpdate} from '../../app/actions';
+import * as actions from './actions';
 
 class Todo extends React.Component {
 
@@ -15,10 +15,10 @@ class Todo extends React.Component {
     render() {
 
         return (
-            <div>
+            <React.Fragment>
                 <TodoForm handler={this.props.todoCreate} />
                 <TodoList todoList={this.props.todoList} updateHandler={this.props.todoUpdate} deleteHandler={this.props.todoDelete} />
-            </div>
+            </React.Fragment>
         )
 
     }
@@ -26,18 +26,18 @@ class Todo extends React.Component {
 }
 
 // Takes the current state and maps it to props.todoList (or whatever)
-const mapStateToProps = state => {
+const mapStateToProps = (state) => {
 	return {
-		todoList: state
+		todoList: state.todo
 	}
 }
 
 // map these dispatch actions back to props.todoCreate (or whatever)
 const mapDispatchToProps = (dispatch, getState) => {
 	return {
-		todoCreate: todoItem => dispatch(todoCreate(todoItem)),
-        todoUpdate: todoItem => dispatch(todoUpdate(todoItem)),
-        todoDelete: todoItem => dispatch(todoDelete(todoItem))
+		todoCreate: todoItem => dispatch(actions.todoCreate(todoItem)),
+        todoUpdate: todoItem => dispatch(actions.todoUpdate(todoItem)),
+        todoDelete: todoItem => dispatch(actions.todoDelete(todoItem))
 	}
 }
 

@@ -1,24 +1,8 @@
-let initialState = [];
+import {combineReducers} from 'redux';
 
-export default (state=initialState, action) => {
-    
-  let {type, payload} = action;
+import todoReducer from '../components/todo/reducer';
 
-  switch(type) {
-    case 'CREATE': 
-        return [...state, payload];
-        
-    case 'UPDATE': 
-        return state.map(todo => todo.id === payload.id ? payload : todo);
-        
-    case 'DELETE': 
-        return state.filter(todo => todo.id !== payload.id);
-        
-    case 'RESET': 
-        return initialState;
-    
-    default: 
-        return state;
-  }
-  
-};
+
+export default combineReducers({
+    todo: todoReducer
+});

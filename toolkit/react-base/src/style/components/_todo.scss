@@ -1,0 +1,13 @@
+.todo {
+
+    li {
+
+        cursor: pointer;
+        margin:.75em 0;
+
+        &.done {
+            text-decoration:line-through;
+        }
+    }
+
+}

@@ -2,6 +2,8 @@ import React from 'react';
 
 import TodoForm from './todo-form';
 
+import {activeProps} from '../../lib/__';
+
 class TodoItem extends React.Component {
 
     constructor(props) {
@@ -11,6 +13,7 @@ class TodoItem extends React.Component {
         }
 
         this.toggleEditState = this.toggleEditState.bind(this);
+        this.toggleDone = this.toggleDone.bind(this);
     }
 
     toggleEditState() {
@@ -18,11 +21,26 @@ class TodoItem extends React.Component {
         this.setState({editing});
     }
 
+    toggleDone() {
+
+        let task = Object.assign({}, this.props.item);
+            task.done = ! task.done;
+
+        this.props.updateHandler( task );
+
+    }
+
     render() {
+
+        let config = {
+            done: this.props.item.done
+        };
+
+        let classes = activeProps(config).join(' ');
 
         return (
 
-            <li onDoubleClick={this.toggleEditState}>
+            <li className={classes} onClick={this.toggleDone} onDoubleClick={this.toggleEditState}>
 
                 {
                     this.state.editing
