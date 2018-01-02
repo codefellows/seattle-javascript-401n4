@@ -1,6 +1,7 @@
 'use strict';
 
 const morgan = require('morgan');
+const cors = require('cors');
 
 // expressy stuff
 const express = require('express');
@@ -10,6 +11,7 @@ let http = null;
 let isRunning = false;
 
 app.use(morgan('dev'));
+app.use(cors());
 
 // Our Routes
 app.use(require("../routes/api"));
