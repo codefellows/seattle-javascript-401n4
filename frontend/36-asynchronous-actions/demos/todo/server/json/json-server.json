@@ -1,0 +1,5 @@
+{
+    "id":"_id",
+    "routes":"routes.json",
+    "port":8082
+}
