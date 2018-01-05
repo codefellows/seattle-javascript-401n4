@@ -1,0 +1,15 @@
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css');
+
+@import './theme/variables';
+
+@import './utilities/reset';
+
+@import './mixins/all';
+
+@import './components/app',
+        './components/header',
+        './components/footer',
+        './components/navbar',
+        './components/modal',
+        './components/categories',
+        './components/cards'

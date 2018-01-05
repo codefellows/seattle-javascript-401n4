@@ -1,0 +1,8 @@
+$hbase:3em;
+@mixin headings($from: 1, $to: 6){
+    @for $i from $from through $to{
+      h#{$i}{
+        font-size:calc( #{$hbase} * ( 1 - (#{$i} * .2 ) );
+      }
+    }
+}
