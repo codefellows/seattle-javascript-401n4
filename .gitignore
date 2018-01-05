@@ -73,3 +73,7 @@ tags
 # React/Webpack files
 *.map
 .sass-cache
+
+
+# Database Directories #
+__data__
