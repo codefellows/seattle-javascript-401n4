@@ -1,14 +1,17 @@
 'use strict';
 
+// http://localhost/api/todo
+
 const express = require('express');
 const jsonParser = require('body-parser').json();
 const requireDir = require('require-dir');
+const bearerAuth = require('../lib/middleware/bearer-auth');
 
 const models = requireDir(__dirname + '/../models/');
 
 const apiRouter = module.exports = express.Router();
 
-apiRouter.get('/api/:model', (req,res,next) => {
+apiRouter.get('/api/:model', bearerAuth, (req,res,next) => {
 
     try {
 
@@ -26,7 +29,7 @@ apiRouter.get('/api/:model', (req,res,next) => {
 
 });
 
-apiRouter.get('/api/:model/:id', (req,res,next) => {
+apiRouter.get('/api/:model/:id', bearerAuth, (req,res,next) => {
 
     try {
 
@@ -45,7 +48,7 @@ apiRouter.get('/api/:model/:id', (req,res,next) => {
 });
 
 
-apiRouter.post('/api/:model', jsonParser, (req,res,next) => {
+apiRouter.post('/api/:model', jsonParser, bearerAuth, (req,res,next) => {
 
     try {
 
@@ -65,7 +68,7 @@ apiRouter.post('/api/:model', jsonParser, (req,res,next) => {
 });
 
 
-apiRouter.put('/api/:model/:id', jsonParser, (req,res,next) => {
+apiRouter.put('/api/:model/:id', jsonParser, bearerAuth, (req,res,next) => {
 
     try {
 
@@ -88,7 +91,7 @@ apiRouter.put('/api/:model/:id', jsonParser, (req,res,next) => {
 });
 
 
-apiRouter.delete('/api/:model/:id', (req,res,next) => {
+apiRouter.delete('/api/:model/:id', bearerAuth, (req,res,next) => {
 
     try {
 
@@ -117,3 +120,6 @@ let getModel = (req, next) => {
 
 
 };
+
+// http://localhost/api/todo
+///  models['todo']
