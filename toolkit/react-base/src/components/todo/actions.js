@@ -1,7 +1,7 @@
 import uuid from 'uuid/v1'
 
 export const todoCreate = todo => {
-  todo.id = uuid()
+  todo._id = uuid()
   todo.timestamp = new Date()
   return {
     type: 'CREATE',
