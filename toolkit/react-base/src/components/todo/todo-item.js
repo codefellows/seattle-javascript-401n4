@@ -24,7 +24,7 @@ class TodoItem extends React.Component {
     toggleDone() {
 
         let task = Object.assign({}, this.props.item);
-            task.done = ! task.done;
+            task.complete = ! task.complete;
 
         this.props.updateHandler( task );
 
@@ -33,7 +33,7 @@ class TodoItem extends React.Component {
     render() {
 
         let config = {
-            done: this.props.item.done
+            complete: this.props.item.complete
         };
 
         let classes = activeProps(config).join(' ');

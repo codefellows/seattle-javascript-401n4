@@ -7,7 +7,8 @@ class TodoForm extends React.Component {
         super(props);
 
         this.state = this.props.todo || {
-            task: props.todo ? props.todo.task : ''
+            task: props.todo ? props.todo.task : '',
+            complete: props.todo ? props.todo.complete : false
         };
 
         this.handleChange = this.handleChange.bind(this);
