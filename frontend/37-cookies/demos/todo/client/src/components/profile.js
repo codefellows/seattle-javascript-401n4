@@ -2,13 +2,13 @@ import React from 'react';
 
 import Auth from './auth';
 
-class About extends React.Component {
+class Profile extends React.Component {
 
     render() {
 
         return (
-            <Auth>
-                <h2>Its all about you!</h2>
+            <Auth allowLogin="true">
+                Welcome
             </Auth>
         )
 
@@ -16,4 +16,4 @@ class About extends React.Component {
 
 }
 
-export default About;
+export default Profile;

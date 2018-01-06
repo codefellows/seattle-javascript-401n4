@@ -17,16 +17,21 @@ class Auth extends React.Component {
 
     render() {
 
+        // using the allowLogin property to let components that want to be
+        // authorized to act as a simple Hide/Show or let this auth form take over
+        // their output
+        let form = this.props.allowLogin
+            ? <AuthForm handleCreate={this.props.authCreate} handleLogin={this.props.authLogin} />
+            : null
+
         return (
 
             <React.Fragment>
                 {
                     renderIf (
                         this.props.auth,
-
                         this.props.children,
-
-                        <AuthForm handleCreate={this.props.authCreate} handleLogin={this.props.authLogin} />
+                        form
                     )
                 }
             </React.Fragment>
@@ -36,6 +41,8 @@ class Auth extends React.Component {
     }
 
 }
+
+
 
 const mapStateToProps = (state) => ({
     auth:state.auth

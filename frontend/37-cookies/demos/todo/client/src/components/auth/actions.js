@@ -15,7 +15,8 @@ export const authLogin = (user={}) => dispatch => {
         .then(res => {
             dispatch(setToken(res.text));
             return res;
-        });
+        })
+        .catch( e => console.error('Authenticaton Error:', e.message) );
 };
 
 export const authCreateAccount = user => dispatch => {
@@ -26,7 +27,8 @@ export const authCreateAccount = user => dispatch => {
         .then(res => {
             dispatch(setToken(res.text));
             return res;
-        });
+        })
+        .catch( e => console.error('Authenticaton Error:', e.message) );
 };
 
 
