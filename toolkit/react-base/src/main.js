@@ -11,10 +11,10 @@ import App from './components/app'
 const store = createStore();
 
 class Main extends React.Component {
-    
+
     constructor(props) {
         super(props);
-        store.subscribe( ()=>console.log(store.getState()) );
+        if ( __DEBUG__ ) { store.subscribe( ()=>console.log(store.getState()) ); }
     }
 
     render() {
@@ -26,7 +26,7 @@ class Main extends React.Component {
             </Provider>
         )
     }
-    
+
 }
 
 ReactDom.render(<Main/>, document.getElementById('root'));

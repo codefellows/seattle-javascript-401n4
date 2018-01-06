@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
+import Auth from './auth'
 
 class Navbar extends React.Component {
 
@@ -10,8 +11,10 @@ class Navbar extends React.Component {
             <nav>
                 <ul>
                     <li><Link to="/">Home</Link></li>
-                    <li><Link to="/todo">To Do List</Link></li>
-                    <li><Link to="/about/react">About</Link></li>
+                    <Auth>
+                        <li><Link to="/todo">To Do List</Link></li>
+                    </Auth>
+                    <li><Link to="/profile">Profile</Link></li>
                 </ul>
             </nav>
 

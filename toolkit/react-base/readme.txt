@@ -1,39 +1,96 @@
-npm i -S webpack webpack-dev-server html-webpack-plugin node-sass sass-loader resolve-url-loader css-loader extract-text-webpack-plugin babel-core babel-loader babel-preset-react babel-preset-env babel-plugin-transform-object-rest-spread react react-dom
+Main - componentWillMount -- calls (dispatch) todoInitialize (is an action, that was given through props)
 
-Dependencies
+thunk wakes up ... object ?  do your thing .... function ... runs
 
-react               - Front End Magic (actually the only thing that’ll end up in the browser (aside from assets)
-rect-dom            - Turns react into a browser rendering engine
-                    - There's others ... react-native for devices, react-ncurses for terminal apps
-                    
-node-sass           - SCSS Compiler
+    function: todoInitialize
 
-webpack             - The Bundler
-webpack-dev-server  - Sorta like nodemon — will reload the browser
-html-webpack-plugin - Will generate the right (dynamic and different) script and css tags for the index.html file
+        call superagent to fetch it all
 
-sass-loader         - Turns SASS into CSS
-resolve-url-loader  - Allows relative paths in the SASS code
-css-loader          - Turns CSS code into a JS object that webpack can understand
+        dispatch to private method called "initAction"
 
-babel-core          - Transforms ES6 code into ES5
-babel-loader        - Hooks babel up to webpack
-babel-preset-react  - 
-babel-preset-env    - Transpiles down the proper ES version
-babel-plugin-transform-object-rest-spread   - (gives us the … for objects)
+            fires the "INIT" reducer with the result of superagent
 
-extract-text-webpack-plugin                 - Takes CSS code and turns it into a separate css bundle
+            Sets the state with whatever it got
+
+            Refreshes the page
 
 
 
 
-            <BrowserRouter>
-                <nav>
-                    <ul>
-                        <li><Link to="/">Home</Link></li>
-                        <li><Link to="/about/john">About</Link></li>
-                    </ul>
-                    <Route exact path="/" component={Home} />
-                    <Route path="/about/:who" component={About} />
-                </nav>
-            </BrowserRouter>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Update webpack config to use the ENV
+
+Create and import the thunk middleware
+
+Create new public thunked actions
+Rename/Unpublish all of the original actions
+Export only the functional ones
+
+Add an "INITIALIZE" reducer
+
+Change "CREATE" action to not do the ID and Dates
+
+Call the new fetchAll in componentWillMount for the container
+
+Use the new import as syntax
+
+
+
+Webpack
+    const {DefinePlugin, EnvironmentPlugin} = require('webpack');
+    const production = process.env.NODE_ENV === 'production';
+
+    let plugins = [
+      new EnvironmentPlugin(['NODE_ENV']),
+      new ExtractPlugin('bundle.[hash].css'),
+      new HTMLPlugin({template: `${__dirname}/src/index.html`}),
+      new DefinePlugin({
+        __DEBUG__: JSON.stringify(!production),
+        __API_URL__: JSON.stringify(process.env.API_URL),
+      }),
+    ];
+
+Create new public thunked actions like this:
+
+    export const todoCreate = todo => dispatch => {
+
+        let url = API + '/todo';
+        return superagent.post(url)
+          .send(todo)
+          .then(res => {
+            dispatch(todoDispatchCreate(res.body));
+            return res;
+        })
+        .catch(console.error);
+
+    };
+
+Create and import the thunk middleware:
+
+    let thunk = store => next => action => {
+
+        return typeof action === "function"
+                ? action(store.dispatch, store.getState)
+                : next(action);
+
+    }
+
+    export default thunk;
