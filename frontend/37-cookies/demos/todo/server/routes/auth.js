@@ -20,7 +20,7 @@ authRouter.post('/auth/create', jsonParser, (req, res, next) => {
                 .then( user => {
                     let token = user.generateToken();
                     res.cookie('auth', token, { maxAge: 900000 });
-                    res.send(token);
+                    res.send({user,token});
                 })
                 .catch(next);
         })
@@ -42,7 +42,7 @@ authRouter.get('/auth/login', basicHTTP, (req, res, next) => {
                 .then( user => {
                     let token = user.generateToken();
                     res.cookie('auth', token, { maxAge: 900000 });
-                    res.send(token);
+                    res.send({user,token});
                 })
                 .catch( err =>
                     next({statusCode: 403, message: 'Invalid Credentials'})

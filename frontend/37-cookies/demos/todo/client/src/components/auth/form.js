@@ -1,3 +1,5 @@
+import "./_auth.scss";
+
 import React from 'react'
 import {renderIf} from '../../lib/__'
 
@@ -8,18 +10,11 @@ class AuthForm extends React.Component {
       username: '',
       password: '',
       email: '',
-      error: null,
-      action: "login",
+      error: null
     }
 
-    this.handleCreate = this.handleCreate.bind(this)
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
-  }
-
-  handleCreate(e) {
-      e.preventDefault();
-      this.setState({action:"signup"});
   }
 
   handleChange(e) {
@@ -32,69 +27,86 @@ class AuthForm extends React.Component {
   handleSubmit(e) {
 
     e.preventDefault()
-    let {username, password, email} = this.state
 
-    let handler = this.state.action === "signup" ? this.props.handleCreate : this.props.handleLogin;
+    let handler = e.target.action === "signup" ? this.props.handleCreate : this.props.handleLogin;
 
-    handler({username, password, email})
-    .then(() => {
-      this.setState({username: '', email: '', password: ''})
-    })
-    .catch(error => {
-      console.error(error)
-      this.setState({error})
-    })
+    handler(this.state)
+    .then()
+    .catch(console.error)
+
   }
 
   render() {
+
+    let username =
+                <label htmlFor="username">
+                    <span>Username</span>
+                    <input
+                        type="text"
+                        name="username"
+                        placeholder="username"
+                        value={this.state.username}
+                        required="true"
+                        onChange={this.handleChange}
+                    />
+                </label>
+
+    let password =
+                <label htmlFor="password">
+                    <span>Password</span>
+                    <input
+                        type="password"
+                        name="password"
+                        placeholder="password"
+                        value={this.state.password}
+                        required="true"
+                        onChange={this.handleChange}
+                    />
+                </label>
+
     return (
-      <form
-        onSubmit={this.handleSubmit}
-        className="auth-form">
 
-        <div className="error">{this.state.error}</div>
+        <div className="loginFormContainer">
 
-        {
+            <form onSubmit={this.handleSubmit} action="login" className="auth-form">
 
-            renderIf(
-                this.state.action === "login",
-                <div><a href="#" onClick={this.handleCreate}>New User? Create Your Account</a></div>
-            )
+                <h2>Existing Users, Login</h2>
 
-        }
+                {username}
+                {password}
 
-        {
-            renderIf(
-                this.state.action === 'signup',
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="email"
-                    value={this.state.email}
-                    required="true"
-                    onChange={this.handleChange}/>
-            )
-        }
+                <button type="submit">Login</button>
 
-        <input
-          type="text"
-          name="username"
-          placeholder="username"
-          value={this.state.username}
-          required="true"
-          onChange={this.handleChange}/>
+            </form>
 
-        <input
-          type="password"
-          name="password"
-          placeholder="password"
-          value={this.state.password}
-          required="true"
-          onChange={this.handleChange}/>
 
-        <button type="submit">{this.state.action}</button>
+            <form onSubmit={this.handleSubmit} action="signup" className="auth-form">
 
-      </form>
+                <h2>New Users, Create an Account</h2>
+
+                <label htmlFor="email">
+                    <span>Email Address</span>
+                    <input
+                        id="email"
+                        type="email"
+                        name="email"
+                        placeholder="email"
+                        value={this.state.email}
+                        required="true"
+                        onChange={this.handleChange}
+                    />
+                </label>
+
+                {username}
+
+                {password}
+
+                <button type="submit">Create Account</button>
+
+            </form>
+
+        </div>
+
     )
   }
 }

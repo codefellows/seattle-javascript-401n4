@@ -29,7 +29,7 @@ class Auth extends React.Component {
             <React.Fragment>
                 {
                     renderIf (
-                        this.props.auth,
+                        this.props.auth.token,
                         this.props.children,
                         form
                     )
