@@ -1,0 +1,21 @@
+label {
+  display: block; }
+
+input[type="checkbox"] {
+  display: none; }
+  input[type="checkbox"] ~ span {
+    line-height: 1.2em; }
+    input[type="checkbox"] ~ span:before {
+      background: #eee;
+      border: 1px solid #ccc;
+      border-radius: 50%;
+      content: '';
+      display: inline-block;
+      height: 1em;
+      line-height: 1.2em;
+      margin: 0 .2em;
+      width: 1em; }
+  input[type="checkbox"]:checked ~ span:before {
+    background: green; }
+
+/*# sourceMappingURL=_forms.css.map */

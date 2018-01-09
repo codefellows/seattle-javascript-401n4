@@ -1,0 +1,34 @@
+label {
+    display:block;
+}
+
+input[type="checkbox"] {
+
+    display:none;
+
+    ~ span {
+
+        line-height:1.2em;
+
+        &:before {
+            background:#eee;
+            border:1px solid #ccc;
+            border-radius:50%;
+            content:'';
+            display:inline-block;
+            height:1em;
+            line-height:1.2em;
+            margin:0 .2em;
+            width:1em;
+        }
+    }
+
+    &:checked {
+        ~ span {
+            &:before {
+                background:green;
+            }
+        }
+    }
+
+}

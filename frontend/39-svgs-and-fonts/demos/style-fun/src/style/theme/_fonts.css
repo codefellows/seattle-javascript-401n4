@@ -1,0 +1,11 @@
+/* aldrich-regular - latin */
+@font-face {
+  font-family: 'Aldrich';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../assets/fonts/aldrich/aldrich-v8-latin-regular.eot");
+  /* IE9 Compat Modes */
+  src: local("Aldrich Regular"), local("Aldrich-Regular"), url("../assets/fonts/aldrich/aldrich-v8-latin-regular.eot?#iefix") format("embedded-opentype"), url("../assets/fonts/aldrich/aldrich-v8-latin-regular.woff2") format("woff2"), url("../assets/fonts/aldrich/aldrich-v8-latin-regular.woff") format("woff"), url("../assets/fonts/aldrich/aldrich-v8-latin-regular.ttf") format("truetype"), url("../assets/fonts/aldrich/aldrich-v8-latin-regular.svg#Aldrich") format("svg");
+  /* Legacy iOS */ }
+
+/*# sourceMappingURL=_fonts.css.map */
