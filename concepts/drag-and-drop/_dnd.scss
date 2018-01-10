@@ -1,0 +1,11 @@
+$dropBack:#eaf0f7;
+
+.drop-ready {
+    background: $dropBack;
+    border: 2px dashed darken($dropBack, 60%);
+}
+
+.dragging {
+    border:ipx solid #000;
+    opacity:.5;
+}
