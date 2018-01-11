@@ -26,9 +26,19 @@ describe('hash map', () => {
       {key:"washington", value: "also cool"},
       {key:"foo", value: 42},
       {key:"array", value: [1,2,3]},
+      {key: "code fellows", value: "401"},
+      {key: "sdfgdfs", value: "404"},
+      {key: "iwendkjs", value: "401"},
+      {key: "rioejf23wefs", value: "401"},
+      {key: "dlkfn21oi3rnw", value: "401"},
+      {key: "ldfkn2k3w", value: "401"},
+      {key: "lord of the rings", value: "401"}
     ]
     all.forEach(item => {
-      console.log(item.key, map.hash(item.key), map.hash(item.key) % map.buckets.length)
+      let key = item.key
+      let hash = map.hash(key)
+      let index = hash % map.buckets.length
+      console.log("KEY:", key, "HASH:", hash, "INDEX:", index)
       map.put(item.key, item.value)
     })
     console.log(map.buckets)
