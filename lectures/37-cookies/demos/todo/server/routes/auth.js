@@ -2,6 +2,7 @@
 
 const User = require(__dirname + '/../models/user');
 const basicHTTP = require(__dirname + '/../lib/middleware/basic-http');
+const bearerAuth = require(__dirname + '/../lib/middleware/bearer-auth');
 const jsonParser = require('body-parser').json();
 
 const authRouter = module.exports = require('express').Router();
@@ -48,6 +49,17 @@ authRouter.get('/auth/login', basicHTTP, (req, res, next) => {
                     next({statusCode: 403, message: 'Invalid Credentials'})
                 );
 
+        })
+        .catch(next);
+});
+
+authRouter.get('/auth/validate', bearerAuth, (req, res, next) => {
+
+    User.findOne({_id: req.user._id})
+        .then(user => {
+            let token = user.generateToken();
+            res.cookie('auth', token, { maxAge: 900000 });
+            res.send({user,token});
         })
         .catch(next);
 });

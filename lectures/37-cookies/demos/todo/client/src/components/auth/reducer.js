@@ -1,5 +1,5 @@
 
-let defaultState = {};
+let defaultState = {init:true};
 
 export default (state=defaultState,action) => {
 
@@ -8,7 +8,10 @@ export default (state=defaultState,action) => {
     switch(type) {
 
         case "SET_AUTH_TOKEN":
-            return Object.assign({}, state, payload);
+            return {token:payload.token};
+            
+        case "SET_AUTH_USER":
+            return {token:payload.token};
 
         case "DELETE_AUTH_TOKEN":
             return defaultState;

@@ -9,13 +9,18 @@ class Auth extends React.Component {
 
     constructor(props) {
         super(props);
+        this.state = {init:true};
     }
 
     componentWillMount() {
-        this.props.authLogin();
+        this.props.authLogin()
+            .then( () => this.setState({init:false}) );
     }
 
     render() {
+        
+        // Cease rendering on the very first load (like a page refresh) to avoid a FOUC
+        if ( this.state.init ) { return null; }
 
         // using the allowLogin property to let components that want to be
         // authorized to act as a simple Hide/Show or let this auth form take over

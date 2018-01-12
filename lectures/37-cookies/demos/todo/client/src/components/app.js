@@ -7,7 +7,7 @@ import Header from './header'
 import Footer from './footer'
 import Navbar from './navbar'
 import Home from './home'
-import Profile from './profile'
+import Profile from './profile/'
 import Todo from './todo/todo-container'
 
 class App extends React.Component {
