@@ -1,0 +1,31 @@
+{
+  "name": "zzzzz",
+  "version": "1.0.0",
+  "description": "npm i -S express body-parser morgan cors http-errors mongoose dotenv mongodb bluebird npm i -D jest superagent",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon index.js",
+    "mongo": "mongod --dbpath=./__data__ --smallfiles",
+    "test": "jest -i --verbose --coverage"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^21.2.1",
+    "superagent": "^3.8.0"
+  },
+  "dependencies": {
+    "bcrypt": "^1.0.3",
+    "bluebird": "^3.5.1",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "dotenv": "^4.0.0",
+    "express": "^4.16.2",
+    "jsonwebtoken": "^8.1.0",
+    "mongo": "^0.1.0",
+    "mongoose": "^4.12.5",
+    "morgan": "^1.9.0",
+    "require-dir": "^0.3.2"
+  }
+}
