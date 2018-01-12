@@ -28,8 +28,6 @@ class Profile extends React.Component {
 
     render() {
         
-        console.log("I think state is", this.props.user);
-
         return (
             <Auth allowLogin="true">
                 Welcome {this.props.user.username}

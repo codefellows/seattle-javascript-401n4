@@ -11,12 +11,6 @@ export default (state=defaultState,action) => {
             return payload.user;
         }
         
-        case "UPDATE_PROFILE":
-            return Object.assign({}, state, payload);
-
-        case "DELETE_PROFILE":
-            return defaultState;
-
         default:
             return state;
 
