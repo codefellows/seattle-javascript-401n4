@@ -1,0 +1,99 @@
+form {
+  
+  background:#fff;
+  margin:2em;
+  width:200px;
+  
+  label.textfield {
+    
+    display:block;
+    margin:2em;
+    position:relative;
+    
+    span, input {
+      border:none;
+      border-bottom:1px solid #ccc;
+      height:1.5em;
+      line-height:1.5em;
+      width:100%;
+    }
+    
+    span {
+      color: navy;
+      position:absolute;
+      top:0;
+      left:0;
+      bottom:0;
+      right:0;
+      background:#fff;
+    }
+    
+    input {
+      
+      outline:none;
+      transition: all .5s linear;
+      
+      &:focus {
+        
+        border-bottom:1px solid red;
+        
+        ~ span {
+          border:none;
+          top:-1.1em;
+          bottom:1.1em;
+          left: 0;
+          right: 0;
+          font-size:.75em;
+          height:1em;
+          line-height:1em;
+          transition: all .115s ease;
+        }
+        
+      }
+    }
+  }
+  
+  label.check {
+    
+    height:1.5em;
+    
+    span {
+        background: #eee;
+        border-radius:50%;
+        height:1.5em;
+        width:1.5em;
+      
+        &.off {background: #eee;}
+        &.on {background: green;}
+    }
+    
+    
+    input[type=checkbox] {
+      
+      display:none;
+      
+      ~ span.on { 
+        display:none;
+      }
+      
+      ~ span.off {
+        display:inline-block;
+      }
+      
+      &:checked {
+        
+        ~ span.off {
+          display:none;
+        }
+        
+        ~ span.on {
+          display:inline-block;
+        }
+        
+      }
+      
+    }
+    
+  }
+  
+}

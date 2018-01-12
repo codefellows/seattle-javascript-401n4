@@ -1,0 +1,136 @@
+@media screen and (min-width: 600px) {
+nav {
+  
+  background: #ccc;
+  height:2em;
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  
+  > input[type=checkbox], > span { display:none; }
+  
+  li {        
+    padding: .5em 1em;
+    min-width:75px;
+    a {
+      color: #000;
+      text-decoration: none;
+    }
+    
+    &:hover {
+      background: #000;
+      a {
+        color: #fff;
+      }
+    }
+  }
+  
+  > ul {
+      margin:0;
+      padding:0;
+      list-style-type:none;
+      display:flex;
+      flex-direction:row;
+      
+      > li {
+        
+        position:relative;
+        
+        > ul {
+          background: #ccc;
+          display:none;
+          list-style-type:none;
+          padding:0;
+          margin:0;
+          position:absolute;
+          left:0;
+          top:2em;
+        }
+        
+        &:hover {
+          ul {
+            display:flex;
+            flex-direction:column;
+          }
+        }
+      }
+      
+    }
+    
+}
+
+}
+
+@media screen and (max-width: 600px) { 
+nav {
+  
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  top:0;
+  left:0;
+  z-index:2;
+  
+  > span {
+    display:block;
+    width:100%;
+    height: .2em;
+    background: #000;
+    border-radius: 10px;
+    content: ' ';
+    margin:.25em 0;
+    position:relative;
+    z-index:0;
+  }
+  
+  > input[type=checkbox] { 
+    cursor:pointer;
+    position:absolute;
+    top:0;
+    left:0;
+    height:50px;
+    width:50px;
+    z-index:3;
+    opacity:0;
+  }
+  
+  > ul {
+    position:absolute;
+    top:0;
+    left: -1000px;
+    z-index:1;
+  }
+  
+  > input[type=checkbox]:checked {
+    opacity:1;
+    &:after {
+      color:#000;
+      position:absolute;
+      top:0;
+      left:0;
+      height:50px;
+      width:50px;
+      line-height:50px;
+      text-align:center;
+      z-index:5;
+      content:'X';
+      font-size:2em;
+      font-weight:100;
+      background:#eee;
+    }
+       
+    ~ ul {
+      left: 0;
+      list-style-type: none;
+      margin:0;
+      padding:50px 2em 2em 2em;
+      border:1px solid #ccc;
+      width:200px;
+      background: #eee;
+    }
+  }
+  
+}
+  
+}
