@@ -7,9 +7,10 @@ export const authLogin = (user={}) => dispatch => {
 
     let token = cookie.load("auth");
     
-    let authMethod = () => authenticateUsingBasic(user);
+    let authMethod = () => authenticateUsingBasic(user); // {}
     
     if ( token ) { authMethod = () => authenticateUsingToken(token) }
+    
     
     return authMethod()
         .then(res => {

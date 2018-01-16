@@ -30,7 +30,7 @@ class Profile extends React.Component {
         
         return (
             <Auth allowLogin="true">
-                Welcome {this.props.user.username}
+                Welcome {this.props.profile.username}
             </Auth>
         )
 
@@ -39,7 +39,7 @@ class Profile extends React.Component {
 }
 
 const mapStateToProps = state => ({
-   user:state.profile
+   profile:state.profile
 });
 
 const mappDispatchToProps = (dispatch, getState) => ({

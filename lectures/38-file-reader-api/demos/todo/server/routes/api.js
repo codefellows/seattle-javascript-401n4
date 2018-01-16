@@ -3,7 +3,7 @@
 // http://localhost/api/todo
 
 const express = require('express');
-const jsonParser = require('body-parser').json();
+const bodyParser = require('../lib/middleware/body-parser');
 const requireDir = require('require-dir');
 const bearerAuth = require('../lib/middleware/bearer-auth');
 
@@ -48,7 +48,7 @@ apiRouter.get('/api/:model/:id', bearerAuth, (req,res,next) => {
 });
 
 
-apiRouter.post('/api/:model', jsonParser, bearerAuth, (req,res,next) => {
+apiRouter.post('/api/:model', bodyParser, bearerAuth, (req,res,next) => {
 
     try {
 
@@ -68,17 +68,22 @@ apiRouter.post('/api/:model', jsonParser, bearerAuth, (req,res,next) => {
 });
 
 
-apiRouter.put('/api/:model/:id', jsonParser, bearerAuth, (req,res,next) => {
+apiRouter.put('/api/:model/:id', bodyParser, bearerAuth, (req,res,next) => {
 
     try {
 
         let model = getModel(req);
         let id = req.params.id;
-
+        
         model.findOne({_id:id})
             .then( record => {
                 Object.assign(record, req.body);
                 return record.save();
+            })
+            .then( record => {
+                if( req.files && req.files.length && typeof record.attachFiles == "function" ) { 
+                    return record.attachFiles(req.files);
+                }
             })
             .then( record => res.send(record) )
             .catch(next);

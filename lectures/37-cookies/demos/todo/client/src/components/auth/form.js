@@ -27,7 +27,7 @@ class AuthForm extends React.Component {
   handleSubmit(e) {
 
     e.preventDefault();
-
+    
     let handler = e.target.dataset.handler === "signup" ? this.props.handleCreate : this.props.handleLogin;
     
     handler(this.state)

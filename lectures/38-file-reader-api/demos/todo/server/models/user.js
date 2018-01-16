@@ -1,13 +1,32 @@
 'use strict';
-
+const aws = require('../lib/s3');
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bluebird').promisifyAll(require('bcrypt'));
 
 const userSchema = new mongoose.Schema({
   username: {type: String, required: true, unique: true},
-  password: {type: String, required: true}
+  password: {type: String, required: true},
+  firstname: {type: String, required: false},
+  lastname: {type: String, required: false},
+  about: {type: String, required: false},
+  avatar: {type: String, required: false},
 });
+
+userSchema.methods.attachFiles = function(files) {
+    
+    let record = this;
+    
+    let file = files[0];
+    let key = `${file.filename}-${file.originalname}`;
+    
+    return aws.upload(file.path, key)
+        .then(url => {
+            record.avatar = url;
+            return record.save();
+        })
+        .catch(console.error);
+};
 
 userSchema.methods.generateHash = function(password) {
 
