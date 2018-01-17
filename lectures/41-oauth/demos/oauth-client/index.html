@@ -1,0 +1,33 @@
+<html>
+
+	<body>
+		
+		<script>
+		
+			let googleURL = "https://accounts.google.com/o/oauth2/v2/auth";
+			
+			let options = {
+				client_id:'312430225712-jnth3nggut7gj02hes6mqdf68ogjthjp.apps.googleusercontent.com',
+				redirect_uri: 'https://cf-401n4-johncokos.c9users.io:8082/oauth/google/code',
+				scope: 'email openid profile',
+				prompt: 'consent',
+				response_type: 'code'
+			}
+			
+			let QueryString = Object.keys(options).map( (key,i) => {
+				return `${key}=` + encodeURIComponent(options[key]);
+			}).join("&");
+			
+			let authURL = `${googleURL}?${QueryString}`;
+			
+			let a = document.createElement('a');
+			a.setAttribute('href', authURL);
+			a.textContent = "Login With Google";
+			
+			document.body.appendChild(a);
+			
+		</script>
+		
+	</body>
+
+</html>
