@@ -1,0 +1,104 @@
+DOCS:
+    https://developers.google.com/identity/protocols/OAuth2WebServer#exchange-authorization-code
+    https://developers.google.com/identity/protocols/OpenIDConnect
+    https://developers.google.com/identity/protocols/OpenID2Migration
+    
+    
+Client:
+
+			let GOOGLE_URL = "https://accounts.google.com/o/oauth2/v2/auth";
+			let options = {
+				client_id: '312430225712-7830d2u7gst1md2rs8lvjdpdic39mgqp.apps.googleusercontent.com',
+				redirect_uri: 'https://cf-401n4-johncokos.c9users.io:8082/oauth/google/code',
+				response_type: 'code',
+				scope: 'profile email openid',
+				prompt: 'consent'
+			}
+			
+			let queryString = Object.keys(options).map( (key,i) => {
+				console.log("Found Key", key);
+				return `${key}=` + encodeURIComponent(options[key]);
+			}).join('&');
+			
+			console.log(queryString);
+			
+			let a = document.createElement('a');
+				a.setAttribute('href', GOOGLE_URL + "?" + queryString);
+				a.textContent="Click here to login with Google";
+				
+			document.body.appendChild(a);
+			
+			
+			
+			
+    
+Route:
+
+.get('/oauth/google/code', (req, res, next) => {
+        
+        let URL = process.env.CLIENT_URL;
+        let code = req.query.code;
+        
+        // Assert we got a code from Google.  If not, redraw the page
+        if ( ! code ) { res.redirect(URL); return; }
+        
+        // Exchange the code for a bearer token
+        superagent.post('https://www.googleapis.com/oauth2/v4/token')
+            .type('form')
+            .send({
+                code:code,
+                client_id: process.env.GOOGLE_CLIENT_ID,
+                client_secret: process.env.GOOGLE_CLIENT_SECRET,
+                redirect_uri: `${process.env.API_URL}/oauth/google/code`,
+                grant_type: "authorization_code"
+            })
+            // Using that token, go to the OpenID API and get the user's google profile
+            .then( response => {
+                let token = response.body.access_token;
+                return superagent.get('https://www.googleapis.com/plus/v1/people/me/openIdConnect')
+                    .set('Authorization', 'Bearer ' + token)
+                    .then( response => response.body );
+            })
+            // Create or login the user
+            .then ( googleUser => {
+                return User.handleGoogle(googleUser);
+            })
+            .then ( user => {
+                return user.tokenCreate();
+            })
+            .then ( token => {
+                res.cookie('X-bb', token);
+                res.redirect(URL);
+            }) 
+            .catch( error => {
+                console.error(error);
+                res.redirect(URL);
+            })
+    })
+    
+    
+    
+MODEL:
+
+User.handleGoogle = function(googleUser) {
+  
+    if ( ! googleUser || ! googleUser.email ) {
+        return Promise.reject( createError(400, 'VALIDATION ERROR: missing email') );
+    }  
+      
+    return User.findOne({email:googleUser.email})
+        .then(user => {
+            if ( ! user ) { throw  new Error ("User Not Found"); }
+            console.log("Existing User, welcome back");
+            return  user;
+        })    
+        .catch( error => {
+            console.log("Creating new user, welcome");
+            return new User({
+                email: googleUser.email,
+                username: faker.internet.userName()
+            }).save();
+        });
+      
+};
+

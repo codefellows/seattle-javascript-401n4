@@ -16,8 +16,6 @@ teamRouter.post('/teams', jsonParser, (req,res,next) => {
 teamRouter.delete('/team/:id', (req,res,next) => {
     let teamId = req.params.id;
     
-    // TODO: Lookup the team first so that we can include it's name in the response
-    
     Team.remove({_id:teamId})
         .then( () => res.send("Bye Bye Team") )
         .catch({statusCode:500,message:"I have no idea whats wrong"})
@@ -25,7 +23,6 @@ teamRouter.delete('/team/:id', (req,res,next) => {
 
 teamRouter.get('/teams', (req,res,next) => {
     
-    // TODO: support "random" querying, not just a vomit of all teams
     Team.find({})
         .then( teams => res.send(teams) )
         .catch(next);

@@ -8,7 +8,6 @@ const quicksort = module.exports = function (items, compare, left, right){
    // but this will break if the items can't be compared with > or < 
    compare = compare ? compare : (a,b) => a < b;
 
-  // TODO: uncomment this to see how the partitioning works
   //console.log(items.slice(left, right));
 
   if (items.length > 1){
@@ -32,7 +31,6 @@ const quicksort = module.exports = function (items, compare, left, right){
 }
 
 function swap(items, left, right){
-  //TODO: comment out to watch the swapping in action
   //console.log('swaping', items[left], items[right]);
   let tmp = items[left];
   items[left] = items[right];

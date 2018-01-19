@@ -8,7 +8,6 @@ const mergeSort = module.exports = function (items, compare){
   // the default sort is smallest to largest
   compare = compare ? compare : (a, b) => a < b;
   
-  // TODO: uncomment the log to see how items get cut down to length one
   //console.log('items', items);
   if (items.length < 2) return items;
 
@@ -26,7 +25,6 @@ const mergeSort = module.exports = function (items, compare){
 // merge can only merge sorted lists correctly
 // lists of length one are sorted
 function merge(left, right, compare){
-  // TODO: uncomment the log to see whats getting merged
   //console.log('left', left, 'right', right);
 
   var result  = [];
@@ -49,7 +47,6 @@ function merge(left, right, compare){
     }
   }
 
-  //TODO: uncomment the log to see the result of the merge
   //console.log('result', result);
   return result.concat(left).concat(right);
 }

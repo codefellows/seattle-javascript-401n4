@@ -16,8 +16,6 @@ playerRouter.post('/players', jsonParser, (req,res,next) => {
 playerRouter.delete('/player/:id', (req,res,next) => {
     let playerId = req.params.id;
     
-    // TODO: Lookup the Player first so that we can include it's name in the response
-    
     Player.remove({_id:playerId})
         .then( () => res.send("Bye Bye Player") )
         .catch({statusCode:500,message:"I have no idea whats wrong"})
@@ -25,7 +23,6 @@ playerRouter.delete('/player/:id', (req,res,next) => {
 
 playerRouter.get('/players', (req,res,next) => {
     
-    // TODO: support "random" querying, not just a vomit of all players
     Player.find({})
         .then( players => res.send(players) )
         .catch(next);
