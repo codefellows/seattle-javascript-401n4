@@ -1,6 +1,6 @@
 class Node {
-    constructor(data='', left=null, right=null) {
-        this.data = data;
+    constructor(value='', left=null, right=null) {
+        this.value = value;
         this.left = left;
         this.right = right;
     }
@@ -12,53 +12,80 @@ class BST {
         this.root = null;
     }
     
-    insert(data) {
+    insert(value) {
         
         const node = this.root;
         
         // Create a new root if we're just getting started.
         if ( node === null ) { 
-            this.root = new Node(data);
+            console.log("Create Root", value);
+            this.root = new Node(value);
             return;
         }
         
-        const _walk = (node) => {
+        const _insert = (node) => {
             
+            console.log("Insert Value/Node Value", value, node.value);
             // Left is Less
-            if( data < node.data ) { 
+            if( value < node.value ) { 
                 if ( node.left === null ) { 
-                    node.left = new Node(data);
+                    console.log("Going to the left");
+                    node.left = new Node(value);
+                    return;
                 }
                 else if ( node.left !== null ) {
-                    _walk(node.left);
+                    return _insert(node.left);
                 }
             }
             
             // Right is might
-            else if ( data > node.data ) { 
+            else if ( value > node.value ) { 
                 if ( node.right === null ) { 
-                    node.right = new Node(data);
+                    console.log("Going to the right");
+                    node.right = new Node(value);
+                    return;
                 }
                 else if ( node.right !== null ) { 
-                    _walk(node.right);
+                    return _insert(node.right);
                 }
             }
             
             else {
+                console.log("???");
                 return null;
             }
         
         }
         
-        _walk(node);
+        _insert(node);
     }
     
+    min() {
+        let current = this.root;
+        while(current.left !== null ) { 
+            current = current.left;
+        }
+        return current.value;
+    }
+    
+    max() {
+        let current = this.root;
+        while(current.right !== null ) { 
+            current = current.right;
+        }
+        return current.value;
+    }
+    
+    
+    DFS(node, level) {
+        console.log( node.value);
+        if (node.left) this.DFS(node.left, level++);
+        if (node.right) this.DFS(node.right, level++);
+    };
+
     prettyPrint() {
-        pretty(this);
-    }
-    
-    pretty(node) {
-        
+        console.log(this.root);
+        this.DFS(this.root,1);
     }
     
 }
